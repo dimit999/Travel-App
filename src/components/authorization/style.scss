@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+.authorization-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.6);
+  background-image: url('../../assets/image/authorization.png');
+  backdrop-filter: blur(20px);
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+}
+
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 410px;
+  height: 338px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  font-family: Roboto;
+  font-style: normal;
+}
+
+.form-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 410px;
+  height: 38px;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  color: #424242;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 60%;
+}
+
+.form__label {
+  display: flex;
+  align-items: center;
+  width: 345px;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 19px;
+  color: #424242;
+}
+
+.form__input {
+  border: 1px solid #C9CACC;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.submit-button {
+  position: relative;
+  left: 115px;
+  width: 116px;
+  height: 34px;
+  background: linear-gradient(104.34deg, #3C4CAD -15.34%, #00C3FF 145.95%);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  color: #FFFFFF;
+  border: none;
+  box-sizing: border-box;
+}
+
+.submit-button:hover {
+  box-shadow: 0px 0px 4px #99A0A3;
+}
+
+.submit-button:active {
+  background: linear-gradient(104.34deg, #5362BE -15.34%, #4AD5FF 145.95%);
+  border: 1.5px solid rgba(29, 138, 216, 0.3);
+  box-shadow: none;
+  border-radius: 4px;
+}
