@@ -2,7 +2,7 @@ import {
   takeEvery, put, call, take,
 } from 'redux-saga/effects';
 
-import "regenerator-runtime/runtime";
+import 'regenerator-runtime/runtime';
 
 import { fetchFlightResponse, showLoaderAction, hideLoaderAction } from './actions';
 import {
@@ -29,7 +29,7 @@ function* flightRequestWorker() {
   yield put(hideLoaderAction());
 }
 
-async function fetchFlight(date) {
+async function fetchFlight() {
   const response = await fetch('https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsedates/v1.0/US/RUB/en-US/SVO-sky/JFK-sky/2021-03?inboundpartialdate=2021-03', {
     method: 'GET',
     headers: {

@@ -6,10 +6,17 @@ import { useHistory } from 'react-router-dom';
 import styles from '@/components/authorization/style.scss';
 import { authAction } from '@/redux/actions';
 
+import { FirebaseDB } from '../../utils/FirebaseDB/FirebaseDB';
+import Auth from '../../utils/Authorization/auth';
+
 
 const AuthForm = ({ authAction }) => {
   const [validated, setValidated] = useState(false);
   const history = useHistory();
+  const firebaseDB = new FirebaseDB();
+  const auth = new Auth();
+
+  const [languageArray, setLang] = useState([]);
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
@@ -23,12 +30,22 @@ const AuthForm = ({ authAction }) => {
     setValidated(true);
   };
 
+  const getLang = async () => {
+    await firebaseDB.getData('Language').then((data) => {
+      setLang(data[0]['ru']);
+    });
+  };
+
+  getLang();
+
+
   return (
     <React.Fragment>
-      <div className={styles['form-wrapper']}>
+      <div className={styles['form-wrapper']} id='form-login'>
         <h1 className={styles['form-title']}>
           Simple Flight Check
         </h1>
+        <div className='errorServ' id='errServ'></div>
         <Form
           noValidate
           validated={validated}
@@ -82,6 +99,7 @@ const AuthForm = ({ authAction }) => {
 
           <Button
             className={styles['submit-button']}
+            id="login-btn"
             type="submit"
           >
             Войти
