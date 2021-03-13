@@ -73,20 +73,18 @@ export default class Auth {
   goLogin() {
     this.AuthStateChanged();
     const checkStatus = status => {
-      db.collection('Users')
-        .doc(status)
-        .get();
-        // .then((doc) => {
-        //   if (doc.data().type === 'student') {
-        //     document.location.href = './main/student/results';
-        //   }
-        //   if (doc.data().type === 'admin') {
-        //     document.location.href = './main/admin/users';
-        //   }
-        //   if (doc.data().type === 'teacher') {
-        //     document.location.href = './main/teacher/group';
-        //   }
-        // });
+      db.collection('Users').doc(status).get();
+      // .then((doc) => {
+      //   if (doc.data().type === 'student') {
+      //     document.location.href = './main/student/results';
+      //   }
+      //   if (doc.data().type === 'admin') {
+      //     document.location.href = './main/admin/users';
+      //   }
+      //   if (doc.data().type === 'teacher') {
+      //     document.location.href = './main/teacher/group';
+      //   }
+      // });
     };
     // login
     // const loginForm = document.querySelector('#form-login');

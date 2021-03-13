@@ -10,7 +10,8 @@ const loaderReducer = (state = initialState, action) => {
       return { ...state, isLoading: true };
     case LOADER_OFF:
       return { ...state, isLoading: false };
-    default: return state;
+    default:
+      return state;
   }
 };
 

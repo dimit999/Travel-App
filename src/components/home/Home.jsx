@@ -6,6 +6,8 @@ import styles from '@/components/home/style.scss';
 import { quitAction } from '@/redux/actions';
 
 import Loader from '../Loader/Loader';
+import WidgetTime from '../WidgetTime/WidgetTime';
+import WidgetWeather from '../WidgetWeather/WidgetWeather';
 
 import ListOfFlight from './List';
 import Slider from './Slider';

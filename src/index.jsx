@@ -13,14 +13,7 @@ import sagaWatcher from './redux/sagas';
 
 const saga = createSagaMiddleware();
 
-const store = createStore(
-  rootReducer,
-  composeWithDevTools(
-    applyMiddleware(
-      saga,
-    ),
-  ),
-);
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(saga)));
 
 saga.run(sagaWatcher);
 
@@ -30,7 +23,4 @@ const Root = () => (
   </Provider>
 );
 
-ReactDOM.render(
-  <Root />,
-  document.getElementById('app')
-);
+ReactDOM.render(<Root />, document.getElementById('app'));

@@ -4,7 +4,10 @@ import { connect } from 'react-redux';
 
 import styles from '@/components/home/style.scss';
 import {
-  dateDefaultAction, datePickerAction, defaultFlightRequestAction, fetchFlightAction,
+  dateDefaultAction,
+  datePickerAction,
+  defaultFlightRequestAction,
+  fetchFlightAction,
 } from '@/redux/actions';
 
 const Slider = ({
@@ -17,13 +20,9 @@ const Slider = ({
   <React.Fragment>
     <div className={styles['slider-title']}>
       <div className={styles['slider-title__route']}>
-        <span>
-          Вылеты
-        </span>
+        <span>Вылеты</span>
         <img src="../../assets/image/bracket.png" alt="bracket" />
-        <span>
-          SVO - JFK
-        </span>
+        <span>SVO - JFK</span>
       </div>
       <div className={styles['calendar']}>
         <Form.Group controlId="dob">
