@@ -11,6 +11,9 @@ import WidgetWeather from '../WidgetWeather/WidgetWeather';
 
 import ListOfFlight from './List';
 import Slider from './Slider';
+import WidgetTime from '../WidgetTime/WidgetTime';
+import WidgetWeather from '../WidgetWeather/WidgetWeather';
+import WidgetCurrency from '../WidgetCurrency/WidgetCurrency';
 
 const Home = ({ isLoading, quitAction }) => {
   const history = useHistory();
@@ -36,8 +39,9 @@ const Home = ({ isLoading, quitAction }) => {
           </button>
         </div>
         <div className={styles['home-content-wrapper']}>
-          <WidgetTime zone="Europe/Minsk" lang="en-US" />
-          <WidgetWeather city="Minsk" lang="en-US" />
+          <WidgetTime zone="Africa/Johannesburg" lang="ru-RU" />
+          <WidgetWeather city="Претория" lang="ru-RU" />
+          <WidgetCurrency currency="ZAR" lang="ru-RU" />
         </div>
         <div className={styles['home-content-wrapper']}>
           <Slider />
