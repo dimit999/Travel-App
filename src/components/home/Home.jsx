@@ -9,6 +9,7 @@ import Loader from '../Loader/Loader';
 
 import ListOfFlight from './List';
 import Slider from './Slider';
+import WidgetTime from '../WidgetTime/WidgetTime';
 
 const Home = ({ isLoading, quitAction }) => {
   const history = useHistory();
@@ -26,8 +27,15 @@ const Home = ({ isLoading, quitAction }) => {
             }}
           >
             Выйти
-            <img className={styles['quit-icon']} src="../../assets/image/logout_icon.png" alt="logaut" />
+            <img
+              className={styles['quit-icon']}
+              src="../../assets/image/logout_icon.png"
+              alt="logaut"
+            />
           </button>
+        </div>
+        <div className={styles['home-content-wrapper']}>
+          <WidgetTime zone="Europe/Minsk" lang="en-US" />
         </div>
         <div className={styles['home-content-wrapper']}>
           <Slider />
@@ -47,3 +55,9 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
+
+/*
+<div className={styles['home-content-wrapper']}>
+<WidgetTime zone="Europe/Minsk" lang="ru-RU" />
+</div>
+*/
