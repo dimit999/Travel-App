@@ -6,7 +6,7 @@ const initialState = {
 
 const defaultDateReducer = (
   state = initialState,
-  action
+  action,
 ) => {
   switch (action.type) {
     case DATE_DEFAULT:

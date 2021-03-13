@@ -1,25 +1,15 @@
 {
-  "ecmaFeatures": {
-    "modules": true,
-    "spread" : true,
-    "restParams" : true
-  },
   "env": {
     "es6": true,
     "browser": true,
     "node": true
   },
-  "rules" : {
-    "no-unused-vars" : 2,
-    "no-undef" : 2
-  },
   "parserOptions": {
     "sourceType": "module",
-    "ecmaVersion": 6,
+    "ecmaVersion": 2018,
     "ecmaFeatures": {
       "jsx": true
-    },
-    "sourceType": "module",
+    }
   },
   "plugins": [
     "react-hooks",
@@ -31,7 +21,7 @@
   "settings": {
     "import/resolver": {
       "webpack": {
-        "config": "./webpack.config.ts"
+        "config": "./webpack.config.js"
       },
       "node": {
         "paths": ["src"]
@@ -104,6 +94,8 @@
     "no-multiple-empty-lines": "error",
     "no-await-in-loop": "off",
     "prefer-const": "error",
+    "prefer-spread": "error",
+    "prefer-object-spread": "error",
     "prefer-destructuring": [
       "error",
       {
@@ -116,7 +108,7 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/jsx-filename-extension": [1, {
-      "extensions": [".ts", ".tsx"]
+      "extensions": [".js", ".jsx"]
       }
     ],
     "react/jsx-fragments" : ["error", "element"],
@@ -136,6 +128,8 @@
           "/"
         ]
       }
-    ]
+    ],
+    "no-unused-vars" : 2,
+    "no-undef" : 2
   }
 }

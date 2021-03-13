@@ -16,12 +16,12 @@ const initialState = {
 
 const fetchFlightReducer = (
   state = initialState,
-  action
+  action,
 ) => {
   switch (action.type) {
     case RESPONSE:
       const carriers = {};
-      action.payload.Carriers.forEach((el) => {
+      action.payload.Carriers.forEach(el => {
         carriers[el.CarrierId.toString()] = el.Name;
       });
       return {

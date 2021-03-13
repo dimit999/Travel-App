@@ -23,7 +23,7 @@ const defaultFlightRequestAction = () => ({
   type: DEFAULT_REQUEST,
 });
 
-const dateDefaultAction = (date) => ({
+const dateDefaultAction = date => ({
   type: DATE_DEFAULT,
   payload: date,
 });
@@ -32,12 +32,12 @@ const fetchFlightAction = () => ({
   type: REQUEST,
 });
 
-const datePickerAction = (date) => ({
+const datePickerAction = date => ({
   type: DATE_PICKER,
   payload: date,
 });
 
-const fetchFlightResponse = (response) => ({
+const fetchFlightResponse = response => ({
   type: RESPONSE,
   payload: response,
 });
@@ -50,7 +50,7 @@ const hideLoaderAction = () => ({
   type: LOADER_OFF,
 });
 
-const isFavorite = (favorites) => ({
+const isFavorite = favorites => ({
   type: FAVORITE,
   payload: favorites,
 });
