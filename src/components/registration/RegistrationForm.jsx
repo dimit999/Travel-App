@@ -3,7 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import styles from '@/components/authorization/style.scss';
+import styles from '@/components/registration/style.scss';
 import { authAction } from '@/redux/actions';
 
 const RegistrationForm = ({ authAction }) => {
@@ -14,7 +14,7 @@ const RegistrationForm = ({ authAction }) => {
     history.push('/login');
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     const form = event.currentTarget;
     if (form.checkValidity()) {
       history.push('/');
@@ -29,13 +29,22 @@ const RegistrationForm = ({ authAction }) => {
   return (
     <React.Fragment>
       <div className={styles['form-wrapper']} id="form-login">
-        <h1 className={styles['form-title']}>Регистрация</h1>
-        <div className="errorServ" id="errServ"></div>
+        <div className={styles['form-title-wrapper']}>
+          <h1 className={styles['form-title']}>Регистрация</h1>
+          <Button
+            onClick={loginHandler}
+            className={styles['back-to-login-button']}
+            id="back-to-login-btn"
+            type="button"
+          >
+            <img className={styles['back-to-login-icon']} src="../../assets/image/logout_icon.png" alt="back-to-login"/> Назад
+          </Button>
+        </div>
         <Form
           noValidate
           validated={validated}
           className={styles['form']}
-          onSubmit={(event) => {
+          onSubmit={event => {
             handleSubmit(event);
           }}
         >
@@ -106,15 +115,6 @@ const RegistrationForm = ({ authAction }) => {
           <div className={styles['buttons-wrapper']}>
             <Button className={styles['submit-button']} id="registration-btn" type="submit">
               Регистрация
-            </Button>
-
-            <Button
-              onClick={loginHandler}
-              className={styles['submit-button']}
-              id="login-btn"
-              type="button"
-            >
-              Войти
             </Button>
           </div>
         </Form>

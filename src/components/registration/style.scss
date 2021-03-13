@@ -26,12 +26,31 @@
   font-style: normal;
 }
 
+.form-title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 410px;
+}
+
+.back-to-login-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100px;
+  background: none;
+  color: black;
+  border: none;
+}
+
+.back-to-login-icon {
+  transform: rotate(0.5turn);
+}
+
 .form-title {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 410px;
-  height: 38px;
   font-weight: 500;
   font-size: 24px;
   line-height: 28px;
