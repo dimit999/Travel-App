@@ -6,10 +6,11 @@ import styles from '@/components/home/style.scss';
 import { quitAction } from '@/redux/actions';
 
 import Loader from '../Loader/Loader';
+import WidgetTime from '../WidgetTime/WidgetTime';
+import WidgetWeather from '../WidgetWeather/WidgetWeather';
 
 import ListOfFlight from './List';
 import Slider from './Slider';
-import WidgetTime from '../WidgetTime/WidgetTime';
 
 const Home = ({ isLoading, quitAction }) => {
   const history = useHistory();
@@ -36,6 +37,7 @@ const Home = ({ isLoading, quitAction }) => {
         </div>
         <div className={styles['home-content-wrapper']}>
           <WidgetTime zone="Europe/Minsk" lang="en-US" />
+          <WidgetWeather city="Minsk" lang="en-US" />
         </div>
         <div className={styles['home-content-wrapper']}>
           <Slider />

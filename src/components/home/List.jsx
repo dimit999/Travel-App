@@ -10,11 +10,7 @@ const ListOfFlight = ({ listLength, favorites, quoteIds }) => (
   <React.Fragment>
     <div className={styles['flight-list-wrapper']}>
       <span className={styles['flight-list-title']}>
-        Добавлено в Избранное:
-        {' '}
-        {favorites.length}
-        {' '}
-        рейсов
+        Добавлено в Избранное: {favorites.length} рейсов
       </span>
       <div className={styles['flight-list']}>
         <List

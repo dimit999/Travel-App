@@ -20,9 +20,7 @@ const ListItem = ({
   isFavorite,
   favorites,
 }) => {
-  const uniqueId = price[index]
-    + carriersId[index]
-    + Number(dateFlight[index].substring(8, 10));
+  const uniqueId = price[index] + carriersId[index] + Number(dateFlight[index].substring(8, 10));
 
   return (
     <React.Fragment>
@@ -53,11 +51,7 @@ const ListItem = ({
           >
             <img
               className={styles['favorite-button__icon']}
-              src={
-                favorites?.includes(uniqueId)
-                  ? FAVORITE_HEART
-                  : UNFAVORITE_HEART
-              }
+              src={favorites?.includes(uniqueId) ? FAVORITE_HEART : UNFAVORITE_HEART}
               alt="heart"
             />
           </button>

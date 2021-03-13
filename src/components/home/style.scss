@@ -1,16 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
-@font-face{
-  font-family: "SF Pro Text";
-  src: local("SF Pro Text");
+@font-face {
+  font-family: 'SF Pro Text';
+  src: local('SF Pro Text');
   font-style: normal;
   font-weight: 300;
   src: url('../../assets/fonts/SFProDisplay-Light.woff');
 }
 
-@font-face{
-  font-family: "SF Pro Text";
-  src: local("SF Pro Text");
+@font-face {
+  font-family: 'SF Pro Text';
+  src: local('SF Pro Text');
   font-style: normal;
   font-weight: 600;
   src: url('../../assets/fonts/SFProDisplay-Semibold.woff');
@@ -22,7 +22,7 @@
   align-items: center;
   justify-content: center;
   width: 100vw;
-  background: #FFFFFF;
+  background: #ffffff;
 }
 
 .header {
@@ -35,17 +35,16 @@
 
 .quit-button {
   background: none;
-  font-family: "SF Pro Text";
+  font-family: 'SF Pro Text';
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
   line-height: 22px;
   letter-spacing: -0.408px;
-  color: #1157A7;
+  color: #1157a7;
 }
 
 .quit-icon {
-
 }
 
 .home-content-wrapper {
@@ -55,7 +54,7 @@
   justify-content: center;
   width: 680px;
   height: 895px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
 }
@@ -84,12 +83,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-family: "SF Pro Text";
+  font-family: 'SF Pro Text';
   font-weight: 600;
   font-size: 25px;
   line-height: 22px;
   letter-spacing: -0.408px;
-  color: #1157A7;
+  color: #1157a7;
 }
 
 .picker {
@@ -120,7 +119,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  font-family: "SF Pro Text";
+  font-family: 'SF Pro Text';
   font-weight: 300;
 }
 
@@ -142,12 +141,12 @@
 }
 
 .scrollbar::-webkit-scrollbar-track {
-  background: #E7E7E7;
+  background: #e7e7e7;
   border-radius: 2px;
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
-  background: #1157A7;
+  background: #1157a7;
   border-radius: 2px;
 }
 
@@ -231,7 +230,7 @@
 
 .picker {
   border: none;
-  color: #1157A7;
+  color: #1157a7;
   letter-spacing: -0.408px;
   font-family: SF Pro Text;
   font-style: normal;

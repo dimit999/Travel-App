@@ -4,14 +4,12 @@ const initialState = {
   date: '',
 };
 
-const defaultDateReducer = (
-  state = initialState,
-  action,
-) => {
+const defaultDateReducer = (state = initialState, action) => {
   switch (action.type) {
     case DATE_DEFAULT:
       return { ...state, date: action.payload };
-    default: return state;
+    default:
+      return state;
   }
 };
 

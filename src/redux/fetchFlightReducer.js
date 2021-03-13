@@ -14,10 +14,7 @@ const initialState = {
   listLength: 0,
 };
 
-const fetchFlightReducer = (
-  state = initialState,
-  action,
-) => {
+const fetchFlightReducer = (state = initialState, action) => {
   switch (action.type) {
     case RESPONSE:
       const carriers = {};
@@ -37,7 +34,8 @@ const fetchFlightReducer = (
         carriers,
         listLength: action.payload.Quotes.length,
       };
-    default: return state;
+    default:
+      return state;
   }
 };
 
