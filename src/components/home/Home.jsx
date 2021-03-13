@@ -6,14 +6,12 @@ import styles from '@/components/home/style.scss';
 import { quitAction } from '@/redux/actions';
 
 import Loader from '../Loader/Loader';
+import WidgetCurrency from '../WidgetCurrency/WidgetCurrency';
 import WidgetTime from '../WidgetTime/WidgetTime';
 import WidgetWeather from '../WidgetWeather/WidgetWeather';
 
 import ListOfFlight from './List';
 import Slider from './Slider';
-import WidgetTime from '../WidgetTime/WidgetTime';
-import WidgetWeather from '../WidgetWeather/WidgetWeather';
-import WidgetCurrency from '../WidgetCurrency/WidgetCurrency';
 
 const Home = ({ isLoading, quitAction }) => {
   const history = useHistory();
@@ -52,7 +50,7 @@ const Home = ({ isLoading, quitAction }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   isLoading: state.loaderReducer.isLoading,
 });
 
