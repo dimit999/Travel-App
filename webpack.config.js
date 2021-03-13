@@ -107,8 +107,8 @@ module.exports = {
     }),
     isProduction
       ? new CopyWebpackPlugin({
-        patterns: [{ from: './src', to: '.' }],
-      })
+          patterns: [{ from: './src', to: '.' }],
+        })
       : nothing,
   ],
 };

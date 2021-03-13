@@ -1,9 +1,4 @@
-import {
-  LOGIN,
-  LOGIN_FALSE,
-  LOGIN_TRUE,
-  QUIT,
-} from './constants';
+import { LOGIN, LOGIN_FALSE, LOGIN_TRUE, QUIT } from './constants';
 
 function localStorageAuth() {
   switch (localStorage.getItem('isAuth')) {
@@ -11,7 +6,8 @@ function localStorageAuth() {
       return true;
     case LOGIN_FALSE:
       return false;
-    default: return false;
+    default:
+      return false;
   }
 }
 
@@ -27,7 +23,8 @@ const authReducer = (state = initialState, action) => {
     case QUIT:
       localStorage.setItem('isAuth', 'false');
       return { ...state, auth: false };
-    default: return state;
+    default:
+      return state;
   }
 };
 

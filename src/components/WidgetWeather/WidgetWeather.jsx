@@ -1,30 +1,31 @@
-import styles from '@/components/WidgetWeather/widgetWeather.scss';
-import weatherStyles from '@/components/WidgetWeather/owfont-regular.css';
 import classnames from 'classnames';
 import React, { useEffect, useState } from 'react';
+
+import weatherStyles from '@/components/WidgetWeather/owfont-regular.css';
+import styles from '@/components/WidgetWeather/widgetWeather.scss';
 
 const OWM_API = '46a8d7bc7f3c4adccd8efc07bf1a0431';
 
 const labels = {
-  "en-US" : {
-    feelsLike : "Feels like",
-    wind : "Wind",
-    windSpeed : "m/s",
-    humidity : "Humidity",
+  'en-US': {
+    feelsLike: 'Feels like',
+    wind: 'Wind',
+    windSpeed: 'm/s',
+    humidity: 'Humidity',
   },
-  "fr-FR" : {
-    feelsLike : "Ressenti",
-    wind : "Vent",
-    windSpeed : "m/s",
-    humidity : "Humidité",
+  'fr-FR': {
+    feelsLike: 'Ressenti',
+    wind: 'Vent',
+    windSpeed: 'm/s',
+    humidity: 'Humidité',
   },
-  "ru-RU" : {
-    feelsLike : "Ощущается как",
-    wind : "Ветер",
-    windSpeed : "м/с",
-    humidity : "Влажность",
-  }
-}
+  'ru-RU': {
+    feelsLike: 'Ощущается как',
+    wind: 'Ветер',
+    windSpeed: 'м/с',
+    humidity: 'Влажность',
+  },
+};
 
 function WidgetWeather(props) {
   function getNoWeather() {
@@ -38,7 +39,7 @@ function WidgetWeather(props) {
     };
   }
 
-  let [weather, setNewWeather] = useState(getNoWeather());
+  const [weather, setNewWeather] = useState(getNoWeather());
 
   useEffect(() => {
     const api = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURI(
@@ -80,9 +81,15 @@ function WidgetWeather(props) {
         <i className={classnames(weatherStyles['owf'], weatherStyles[`${weather.icon}`])}></i>
       </p>
       <p className={styles['description']}>{weather.description}</p>
-      <p className={styles['info']}>{labels[props.lang].feelsLike}: {weather.feelsLike}&#176;&nbsp;&nbsp;</p>
-      <p className={styles['info']}>{labels[props.lang].wind}: {weather.wind} {labels[props.lang].windSpeed}</p>
-      <p className={styles['info']}>{labels[props.lang].humidity}: {weather.humidity} %</p>
+      <p className={styles['info']}>
+        {labels[props.lang].feelsLike}: {weather.feelsLike}&#176;&nbsp;&nbsp;
+      </p>
+      <p className={styles['info']}>
+        {labels[props.lang].wind}: {weather.wind} {labels[props.lang].windSpeed}
+      </p>
+      <p className={styles['info']}>
+        {labels[props.lang].humidity}: {weather.humidity} %
+      </p>
     </div>
   );
 }
