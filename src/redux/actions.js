@@ -1,14 +1,11 @@
 import {
-  DATE_DEFAULT,
-  DATE_PICKER,
-  DEFAULT_REQUEST,
-  FAVORITE,
+  WEATHER_PROPS,
   LOADER_OFF,
   LOADER_ON,
   LOGIN,
   QUIT,
   REQUEST,
-  RESPONSE,
+  WEATHER_DATA,
 } from './constants';
 
 const authAction = () => ({
@@ -19,27 +16,18 @@ const quitAction = () => ({
   type: QUIT,
 });
 
-const defaultFlightRequestAction = () => ({
-  type: DEFAULT_REQUEST,
-});
-
-const dateDefaultAction = date => ({
-  type: DATE_DEFAULT,
-  payload: date,
-});
-
-const fetchFlightAction = () => ({
+const weatherRequestAction = () => ({
   type: REQUEST,
 });
 
-const datePickerAction = date => ({
-  type: DATE_PICKER,
-  payload: date,
+const dispatchPropsToSaga = (weatherProps) => ({
+  type: WEATHER_PROPS,
+  payload: weatherProps,
 });
 
-const fetchFlightResponse = response => ({
-  type: RESPONSE,
-  payload: response,
+const fetchWeatherResponse = (weatherData) => ({
+  type: WEATHER_DATA,
+  payload: weatherData,
 });
 
 const showLoaderAction = () => ({
@@ -50,20 +38,12 @@ const hideLoaderAction = () => ({
   type: LOADER_OFF,
 });
 
-const isFavorite = favorites => ({
-  type: FAVORITE,
-  payload: favorites,
-});
-
 export {
   authAction,
   quitAction,
-  fetchFlightAction,
+  weatherRequestAction,
   showLoaderAction,
-  fetchFlightResponse,
-  defaultFlightRequestAction,
-  dateDefaultAction,
-  datePickerAction,
+  fetchWeatherResponse,
+  dispatchPropsToSaga,
   hideLoaderAction,
-  isFavorite,
 };

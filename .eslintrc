@@ -111,7 +111,7 @@
       "extensions": [".js", ".jsx"]
       }
     ],
-    "react/jsx-fragments" : ["error", "element"],
+    "react/jsx-fragments" : ["error"],
     "react/jsx-props-no-spreading": "off",
     "space-before-function-paren": [
       "error",
@@ -129,7 +129,6 @@
         ]
       }
     ],
-    "no-unused-vars" : 2,
     "no-undef" : 2
   }
 }
