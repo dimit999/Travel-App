@@ -1,15 +1,17 @@
-//import './widgetTime.css';
-import styles from '@/components/WidgetTime/widgetTime.scss';
-import Cadencer from '../../services/cadencer';
+// import './widgetTime.css';
 import React, { useEffect, useState } from 'react';
 
-let cadencer = new Cadencer();
+import Cadencer from '@/services/cadencer';
+
+import styles from './widgetTime.scss';
+
+const cadencer = new Cadencer();
 
 function WidgetTime(props) {
-  let [time, setNewTime] = useState({ time: '', date: '', day: '' });
+  const [time, setNewTime] = useState({ time: '', date: '', day: '' });
 
   useEffect(() => {
-    //console.log('Cadencer Init!');
+    // console.log('Cadencer Init!');
     function getTime() {
       const date = new Date();
 
@@ -37,7 +39,7 @@ function WidgetTime(props) {
     cadencer.start();
 
     return () => {
-      //console.log('Cadencer Unmount!');
+      // console.log('Cadencer Unmount!');
       cadencer.setCallback(null);
       cadencer.stop();
     };

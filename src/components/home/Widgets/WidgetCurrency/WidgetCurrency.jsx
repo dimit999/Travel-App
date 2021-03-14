@@ -1,5 +1,6 @@
-import styles from '@/components/WidgetCurrency/widgetCurrency.scss';
 import React, { useEffect, useState } from 'react';
+
+import styles from './widgetCurrency.scss';
 
 const labels = {
   'en-US': {
@@ -45,12 +46,12 @@ function WidgetCurrency(props) {
     };
   }
 
-  let [exchangeRate, setNewExchangeRate] = useState(getNoRate());
+  const [exchangeRate, setNewExchangeRate] = useState(getNoRate());
 
   useEffect(() => {
     const api = 'https://api.exchangeratesapi.io/latest';
-    //This API uses European Central Bank exchange rates.
-    //Base currency for exchange is EURO.
+    // This API uses European Central Bank exchange rates.
+    // Base currency for exchange is EURO.
 
     async function fetchCurrency(api) {
       const response = await fetch(api)
@@ -60,7 +61,10 @@ function WidgetCurrency(props) {
         .then((data) => {
           const EUR = props.currency === 'EUR' ? '1' : data.rates[props.currency];
           const USD = String(Number(EUR) / Number(data.rates['USD'])).slice(0, MAX_RATE_LENGTH);
-          const RUB = String((Number(EUR) / Number(data.rates['RUB'])) * 100).slice(0, MAX_RATE_LENGTH);
+          const RUB = String((Number(EUR) / Number(data.rates['RUB'])) * 100).slice(
+            0,
+            MAX_RATE_LENGTH
+          );
           return {
             USD,
             EUR,

@@ -5,15 +5,8 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import Authorization from './components/authorization/Authorization';
 import Home from './components/home/Home';
 import Registration from './components/registration/Registration';
-import { dateDefaultAction, defaultFlightRequestAction } from './redux/actions';
 
-const App = ({ isAuth, defaultFlightRequestAction, dateDefaultAction }) => {
-  useEffect(() => {
-    const date = new Date().toISOString().substring(0, 7);
-    defaultFlightRequestAction();
-    dateDefaultAction(date);
-  }, []);
-
+const App = ({ isAuth }) => {
   const RouteHome = () => {
     if (isAuth) {
       return <Home />;
@@ -49,9 +42,4 @@ const mapStateToProps = (state) => ({
   isAuth: state.authReducer.auth,
 });
 
-const mapDispatchToProps = {
-  defaultFlightRequestAction,
-  dateDefaultAction,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, null)(App);

@@ -1,0 +1,23 @@
+import { WEATHER_DATA } from './constants';
+
+const initialState = {
+  weatherData: {
+        temperature: 43,
+        icon: '-',
+        description: '-',
+        feelsLike: '-',
+        wind: '-',
+        humidity: '-',
+      },
+};
+
+const loaderReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case WEATHER_DATA:
+      return { ...state, weatherData: action.payload };
+    default:
+      return state;
+  }
+};
+
+export default loaderReducer;
