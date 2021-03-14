@@ -5,7 +5,12 @@ import 'regenerator-runtime/runtime';
 import { CURRENCY_API, MAX_RATE_LENGTH } from '../components/home/Widgets/WidgetCurrency/constants';
 import OWM_API from '../components/home/Widgets/WidgetWeather/constants';
 
-import { fetchWeatherResponse, fetchCurrencyResponse, showLoaderAction, hideLoaderAction } from './actions';
+import {
+  fetchWeatherResponse,
+  fetchCurrencyResponse,
+  showLoaderAction,
+  hideLoaderAction,
+} from './actions';
 import { WEATHER_PROPS, CURRENCY_PROPS, WEATHER_REQUEST, CURRENCY_REQUEST } from './constants';
 
 function* sagaWatcher() {
@@ -76,16 +81,13 @@ function getNoRate() {
 
 async function fetchCurrency(props) {
   const rates = await fetch(CURRENCY_API)
-    .then(rates => {
+    .then((rates) => {
       return rates.json();
     })
-    .then(data => {
+    .then((data) => {
       const EUR = props.currency === 'EUR' ? '1' : data.rates[props.currency];
       const USD = String(Number(EUR) / Number(data.rates['USD'])).slice(0, MAX_RATE_LENGTH);
-      const RUB = String((Number(EUR) / Number(data.rates['RUB'])) * 100).slice(
-        0,
-        MAX_RATE_LENGTH,
-      );
+      const RUB = String((Number(EUR) / Number(data.rates['RUB'])) * 100).slice(0, MAX_RATE_LENGTH);
       return {
         USD,
         EUR,

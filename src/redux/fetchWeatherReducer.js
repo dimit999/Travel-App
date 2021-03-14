@@ -2,13 +2,13 @@ import { WEATHER_DATA } from './constants';
 
 const initialState = {
   weatherData: {
-        temperature: 43,
-        icon: '-',
-        description: '-',
-        feelsLike: '-',
-        wind: '-',
-        humidity: '-',
-      },
+    temperature: 43,
+    icon: '-',
+    description: '-',
+    feelsLike: '-',
+    wind: '-',
+    humidity: '-',
+  },
 };
 
 const fetchWeatherReducer = (state = initialState, action) => {

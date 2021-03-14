@@ -51,7 +51,7 @@ function WidgetCurrency(props) {
   );
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   exchangeRate: state.fetchCurrencyReducer.rate,
 });
 

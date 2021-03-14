@@ -27,7 +27,7 @@ const labels = {
 };
 
 function WidgetWeather(props) {
-  const {weather} = props;
+  const { weather } = props;
 
   return (
     <div className={styles['widget-weather']}>
@@ -50,7 +50,7 @@ function WidgetWeather(props) {
   );
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   weather: state.fetchWeatherReducer.weatherData,
 });
 

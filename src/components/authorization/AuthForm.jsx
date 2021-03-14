@@ -24,7 +24,7 @@ const AuthForm = ({ authAction }) => {
   const handleSubmit = (event) => {
     const form = event.currentTarget;
     if (form.checkValidity()) {
-      history.push('/');
+      history.push('/home');
       authAction();
     } else {
       event.preventDefault();
@@ -42,7 +42,7 @@ const AuthForm = ({ authAction }) => {
   getLang();
 
   return (
-    <React.Fragment>
+    <>
       <div className={styles['form-wrapper']} id="form-login">
         <h1 className={styles['form-title']}>Travel-App</h1>
         <div className="errorServ" id="errServ"></div>
@@ -103,7 +103,7 @@ const AuthForm = ({ authAction }) => {
           </div>
         </Form>
       </div>
-    </React.Fragment>
+    </>
   );
 };
 

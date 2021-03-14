@@ -4,7 +4,4 @@ const CURRENCY_API = 'https://api.exchangeratesapi.io/latest';
 
 const MAX_RATE_LENGTH = 6;
 
-export {
-  CURRENCY_API,
-  MAX_RATE_LENGTH,
-};
+export { CURRENCY_API, MAX_RATE_LENGTH };

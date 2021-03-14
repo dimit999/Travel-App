@@ -10,6 +10,7 @@ const LOADER_OFF = 'LOADER_OFF';
 const WEATHER_DATA = 'WEATHER_DATA';
 const QUIT = 'QUIT';
 const RATE = 'RATE';
+const REGISTRATION_SUCCESS = 'REGISTRATION_SUCCESS';
 
 export {
   LOGIN,
@@ -24,4 +25,5 @@ export {
   WEATHER_DATA,
   QUIT,
   RATE,
+  REGISTRATION_SUCCESS,
 };
