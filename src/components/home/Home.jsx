@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 
 import styles from '@/components/home/style.scss';
 
-import Loader from '../Loader/Loader';
-
 import Footer from './Footer/Footer';
 import LanguageSwitcher from './Header/LanguageSwitcher';
 import Logo from './Header/Logo';
@@ -12,7 +10,7 @@ import QuitButton from './Header/QuitButton';
 import Search from './Header/Search';
 import Widgets from './Widgets/Widgets';
 
-const Home = ({ isLoading }) => {
+const Home = () => {
   return (
     <>
       <div className={styles['home-page-wrapper']}>
@@ -35,8 +33,4 @@ const Home = ({ isLoading }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  isLoading: state.loaderReducer.isLoading,
-});
-
-export default connect(mapStateToProps, null)(Home);
+export default connect(null, null)(Home);

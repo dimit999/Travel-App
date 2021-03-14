@@ -1,15 +1,28 @@
 import { LOADER_OFF, LOADER_ON } from './constants';
 
 const initialState = {
-  isLoading: true,
+  isLoading: {
+    weatherLoading: true,
+    currencyLoading: true,
+  },
 };
 
 const loaderReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOADER_ON:
-      return { ...state, isLoading: true };
+      if (action.loaderType === 'weather') {
+        return { ...state, isLoading: { ...state.isLoading, weatherLoading: true } };
+      }
+      if (action.loaderType === 'currency') {
+        return { ...state, isLoading: { ...state.isLoading, currencyLoading: true } };
+      }
     case LOADER_OFF:
-      return { ...state, isLoading: false };
+      if (action.loaderType === 'weather') {
+        return { ...state, isLoading: { ...state.isLoading, weatherLoading: false } };
+      }
+      if (action.loaderType === 'currency') {
+        return { ...state, isLoading: { ...state.isLoading, currencyLoading: false } };
+      }
     default:
       return state;
   }

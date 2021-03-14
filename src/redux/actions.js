@@ -1,11 +1,14 @@
 import {
   WEATHER_PROPS,
+  CURRENCY_PROPS,
   LOADER_OFF,
   LOADER_ON,
   LOGIN,
   QUIT,
-  REQUEST,
+  WEATHER_REQUEST,
   WEATHER_DATA,
+  RATE,
+  CURRENCY_REQUEST,
 } from './constants';
 
 const authAction = () => ({
@@ -17,12 +20,21 @@ const quitAction = () => ({
 });
 
 const weatherRequestAction = () => ({
-  type: REQUEST,
+  type: WEATHER_REQUEST,
 });
 
-const dispatchPropsToSaga = (weatherProps) => ({
+const currencyRequestAction = () => ({
+  type: CURRENCY_REQUEST,
+});
+
+const dispatchWeatherPropsToSaga = (weatherProps) => ({
   type: WEATHER_PROPS,
   payload: weatherProps,
+});
+
+const dispatchCurrencyPropsToSaga = (currencyProps) => ({
+  type: CURRENCY_PROPS,
+  payload: currencyProps,
 });
 
 const fetchWeatherResponse = (weatherData) => ({
@@ -30,20 +42,30 @@ const fetchWeatherResponse = (weatherData) => ({
   payload: weatherData,
 });
 
-const showLoaderAction = () => ({
-  type: LOADER_ON,
+const fetchCurrencyResponse = (rate) => ({
+  type: RATE,
+  payload: rate,
 });
 
-const hideLoaderAction = () => ({
+const showLoaderAction = (loaderType) => ({
+  type: LOADER_ON,
+  loaderType,
+});
+
+const hideLoaderAction = (loaderType) => ({
   type: LOADER_OFF,
+  loaderType,
 });
 
 export {
   authAction,
   quitAction,
   weatherRequestAction,
-  showLoaderAction,
+  currencyRequestAction,
+  dispatchWeatherPropsToSaga,
+  dispatchCurrencyPropsToSaga,
   fetchWeatherResponse,
-  dispatchPropsToSaga,
+  fetchCurrencyResponse,
+  showLoaderAction,
   hideLoaderAction,
 };

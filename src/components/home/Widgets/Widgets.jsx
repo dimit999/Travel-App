@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import styles from '@/components/home/style.scss';
 
-import { weatherRequestAction, dispatchPropsToSaga } from '../../../redux/actions';
+import { weatherRequestAction, dispatchWeatherPropsToSaga, currencyRequestAction, dispatchCurrencyPropsToSaga } from '../../../redux/actions';
 import Loader from '../../Loader/Loader';
 
 import WidgetCurrency from './WidgetCurrency/WidgetCurrency';
@@ -17,18 +17,35 @@ const Widgets = props => {
     lang: 'ru-RU',
   };
 
-  useEffect(() => {
+  const currencyProps = {
+    currency:'ZAR',
+    lang:'ru-RU',
+  };
+
+  const fetchWidgetsData = () => {
     props.weatherRequestAction();
-    props.dispatchPropsToSaga(weatherProps);
+    props.dispatchWeatherPropsToSaga(weatherProps);
+
+    props.currencyRequestAction();
+    props.dispatchCurrencyPropsToSaga(currencyProps);
+  };
+
+  useEffect(() => {
+    fetchWidgetsData();
   }, []);
 
   return (
     <div className={styles['home-content-wrapper']}>
       <WidgetTime zone="Africa/Johannesburg" lang="ru-RU" />
-      <WidgetCurrency currency="ZAR" lang="ru-RU" />
 
       {
-        props.isLoading
+        props.currencyLoading
+          ? <Loader />
+          : <WidgetCurrency currency={currencyProps.currency} lang={currencyProps.lang} />
+      }
+
+      {
+        props.weatherLoading
           ? <Loader />
           : <WidgetWeather city={weatherProps.city} lang={weatherProps.lang} />
       }
@@ -37,12 +54,15 @@ const Widgets = props => {
 };
 
 const mapStateToProps = state => ({
-  isLoading: state.loaderReducer.isLoading,
+  weatherLoading: state.loaderReducer.isLoading.weatherLoading,
+  currencyLoading: state.loaderReducer.isLoading.currencyLoading,
 });
 
 const mapDispatchToProps = {
   weatherRequestAction,
-  dispatchPropsToSaga,
+  dispatchWeatherPropsToSaga,
+  currencyRequestAction,
+  dispatchCurrencyPropsToSaga,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Widgets);
