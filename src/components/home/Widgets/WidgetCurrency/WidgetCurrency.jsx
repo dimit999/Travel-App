@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 
 import styles from './widgetCurrency.scss';
 
@@ -35,52 +36,8 @@ const labels = {
   },
 };
 
-const MAX_RATE_LENGTH = 6;
-
 function WidgetCurrency(props) {
-  function getNoRate() {
-    return {
-      USD: '-',
-      EUR: '-',
-      RUB: '-',
-    };
-  }
-
-  const [exchangeRate, setNewExchangeRate] = useState(getNoRate());
-
-  useEffect(() => {
-    const api = 'https://api.exchangeratesapi.io/latest';
-    // This API uses European Central Bank exchange rates.
-    // Base currency for exchange is EURO.
-
-    async function fetchCurrency(api) {
-      const response = await fetch(api)
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          const EUR = props.currency === 'EUR' ? '1' : data.rates[props.currency];
-          const USD = String(Number(EUR) / Number(data.rates['USD'])).slice(0, MAX_RATE_LENGTH);
-          const RUB = String((Number(EUR) / Number(data.rates['RUB'])) * 100).slice(
-            0,
-            MAX_RATE_LENGTH
-          );
-          return {
-            USD,
-            EUR,
-            RUB,
-          };
-        })
-        .catch(() => {
-          return getNoRate();
-        });
-      return response;
-    }
-
-    fetchCurrency(api).then((rates) => {
-      setNewExchangeRate(rates);
-    });
-  }, []);
+  const { exchangeRate } = props;
 
   return (
     <div className={styles['widget-currency']}>
@@ -94,4 +51,8 @@ function WidgetCurrency(props) {
   );
 }
 
-export default WidgetCurrency;
+const mapStateToProps = state => ({
+  exchangeRate: state.fetchCurrencyReducer.rate,
+});
+
+export default connect(mapStateToProps, null)(WidgetCurrency);

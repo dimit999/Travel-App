@@ -11,7 +11,7 @@ const initialState = {
       },
 };
 
-const loaderReducer = (state = initialState, action) => {
+const fetchWeatherReducer = (state = initialState, action) => {
   switch (action.type) {
     case WEATHER_DATA:
       return { ...state, weatherData: action.payload };
@@ -20,4 +20,4 @@ const loaderReducer = (state = initialState, action) => {
   }
 };
 
-export default loaderReducer;
+export default fetchWeatherReducer;
