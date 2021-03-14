@@ -9,6 +9,7 @@ import {
   QUIT,
   REQUEST,
   RESPONSE,
+  REGISTRATION_SUCCESS,
 } from './constants';
 
 const authAction = () => ({
@@ -55,6 +56,10 @@ const isFavorite = favorites => ({
   payload: favorites,
 });
 
+const registrationSuccess = () => ({
+  type: REGISTRATION_SUCCESS,
+});
+
 export {
   authAction,
   quitAction,
@@ -66,4 +71,5 @@ export {
   datePickerAction,
   hideLoaderAction,
   isFavorite,
+  registrationSuccess,
 };

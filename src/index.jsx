@@ -11,11 +11,11 @@ import App from './App';
 import rootReducer from './redux/rootReducer';
 import sagaWatcher from './redux/sagas';
 
-const saga = createSagaMiddleware();
+// const saga = createSagaMiddleware();
 
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(saga)));
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware()));
 
-saga.run(sagaWatcher);
+// saga.run(sagaWatcher);
 
 const Root = () => (
   <Provider store={store}>
@@ -24,3 +24,5 @@ const Root = () => (
 );
 
 ReactDOM.render(<Root />, document.getElementById('app'));
+
+export default store;

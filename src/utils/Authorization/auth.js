@@ -6,12 +6,17 @@ import { auth, db } from '../FirebaseDB/FirebaseDB';
 
 import { getErrors } from './authErrorEnum';
 
+import store from '../../index'
+import { registrationSuccess } from '../../redux/actions'
+
+
 // listen for auth status changes
 
 export default class Auth {
   AuthStateChanged() {
     auth.onAuthStateChanged(user => {
       if (user) {
+        // debugger
         localStorage.setItem('uidTravel', user.uid);
       } else {
         // setupUI();
@@ -23,57 +28,60 @@ export default class Auth {
   goSignUp() {
     this.AuthStateChanged();
     // signup
-    const signupForm = document.querySelector('#form-singup');
-    document.querySelector('#button-singup').addEventListener('click', () => {
+    // const signupForm = document.querySelector('#form-singup');
+    document.querySelector('#registration-btn-regForm').addEventListener('click', () => {
       // get user info
-      const mail = signupForm['input-email'].value;
-      const password = signupForm['input-password'].value;
-
-      console.log(mail, password);
+      const mail = document.querySelector('#login-reg-form').value;
+      const password = document.querySelector('#password-reg-form').value;
+      const firstName = document.querySelector('#user-name').value;
+      const secondName = document.querySelector('#user-surname').value;
 
       // sign up the user & add firestore data
       auth
         .createUserWithEmailAndPassword(mail, password)
         .then(cred =>
           db.collection('Users').doc(cred.user.uid).set({
-            fullName: signupForm['input-fio'].value,
-            mail: signupForm['input-email'].value,
-            description: signupForm['input-group'].value,
-            type: 'student',
+            firstName,
+            secondName,
+            mail,
             password,
           }),
         )
-        .then(() =>
-          fetch('/api/sendMail', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ mail, name: signupForm['input-fio'].value }),
-          }),
-        )
+        // .then(() =>
+        //   fetch('/api/sendMail', {
+        //     method: 'POST',
+        //     headers: {
+        //       'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify({ mail, name: document.querySelector('#user-name').value }),
+        //   }),
+        // )
         .then(() => {
-          document.location.href = './main/student/results';
+          localStorage.setItem('isAuth', 'true');
+          store.dispatch(registrationSuccess())
         })
         .catch(er => {
+          localStorage.setItem('isAuth', 'false');
           document.querySelector('#errServ').innerHTML = getErrors(er.code) || er.message;
         });
     });
   }
 
-  static goLogout() {
-    // logout
-    const logout = document.querySelector('#logout');
-    logout.addEventListener('click', () => {
-      auth.signOut();
-      localStorage.removeItem('uidTravel');
-    });
-  }
+  // static goLogout() {
+  //   // logout
+  //   const logout = document.querySelector('#logout');
+  //   logout.addEventListener('click', () => {
+  //     auth.signOut();
+  //     localStorage.removeItem('uidTravel');
+  //   });
+  // }
 
   goLogin() {
     this.AuthStateChanged();
     const checkStatus = status => {
       db.collection('Users').doc(status).get();
+      localStorage.setItem('isAuth', 'true');
+      store.dispatch(registrationSuccess())
       // .then((doc) => {
       //   if (doc.data().type === 'student') {
       //     document.location.href = './main/student/results';
@@ -89,7 +97,6 @@ export default class Auth {
     // login
     // const loginForm = document.querySelector('#form-login');
     document.querySelector('#login-btn').addEventListener('click', () => {
-      // e.preventDefault();
 
       // debugger
 
@@ -102,6 +109,7 @@ export default class Auth {
         .signInWithEmailAndPassword(mail, password)
         .then(cred => {
           checkStatus(cred.user.uid);
+          // localStorage.setItem('isAuth', 'true');
         })
         .catch(er => {
           document.querySelector('#errServ').innerHTML = getErrors(er.code) || er.message;

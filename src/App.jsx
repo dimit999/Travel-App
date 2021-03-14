@@ -1,18 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 import Authorization from './components/authorization/Authorization';
 import Home from './components/home/Home';
 import Registration from './components/registration/Registration';
-import { dateDefaultAction, defaultFlightRequestAction } from './redux/actions';
+// import { dateDefaultAction, defaultFlightRequestAction } from './redux/actions';
 
-const App = ({ isAuth, defaultFlightRequestAction, dateDefaultAction }) => {
-  useEffect(() => {
-    const date = new Date().toISOString().substring(0, 7);
-    defaultFlightRequestAction();
-    dateDefaultAction(date);
-  }, []);
+const App = ({ isAuth }) => {
 
   const RouteHome = () => {
     if (isAuth) {
@@ -28,17 +23,24 @@ const App = ({ isAuth, defaultFlightRequestAction, dateDefaultAction }) => {
     return <Authorization />;
   };
 
+  const IsRegistration = () => {
+    if (isAuth) {
+      return <Redirect to="/" />;
+    }
+    return <Registration />;
+  };
+
   return (
     <BrowserRouter basename="#">
       <Switch>
-        <Route exact path="/">
-          <RouteHome />
-        </Route>
         <Route push path="/login">
           <RouteLogin />
         </Route>
         <Route push path="/registration">
-          <Registration />
+          <IsRegistration />
+        </Route>
+        <Route exact path="/">
+          <RouteHome />
         </Route>
       </Switch>
     </BrowserRouter>
@@ -49,9 +51,5 @@ const mapStateToProps = (state) => ({
   isAuth: state.authReducer.auth,
 });
 
-const mapDispatchToProps = {
-  defaultFlightRequestAction,
-  dateDefaultAction,
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, null)(App);

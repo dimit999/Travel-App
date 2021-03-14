@@ -9,10 +9,8 @@ import Loader from '../Loader/Loader';
 import WidgetTime from '../WidgetTime/WidgetTime';
 import WidgetWeather from '../WidgetWeather/WidgetWeather';
 
-import ListOfFlight from './List';
-import Slider from './Slider';
 
-const Home = ({ isLoading, quitAction }) => {
+const Home = ({ quitAction }) => {
   const history = useHistory();
 
   return (
@@ -31,17 +29,13 @@ const Home = ({ isLoading, quitAction }) => {
             <img
               className={styles['quit-icon']}
               src="../../assets/image/logout_icon.png"
-              alt="logaut"
+              alt="logout"
             />
           </button>
         </div>
         <div className={styles['home-content-wrapper']}>
           <WidgetTime zone="Europe/Minsk" lang="en-US" />
           <WidgetWeather city="Minsk" lang="en-US" />
-        </div>
-        <div className={styles['home-content-wrapper']}>
-          <Slider />
-          {isLoading ? <Loader /> : <ListOfFlight />}
         </div>
       </div>
     </React.Fragment>
