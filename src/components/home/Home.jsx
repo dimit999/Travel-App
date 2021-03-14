@@ -9,6 +9,7 @@ import Loader from '../Loader/Loader';
 import WidgetCurrency from '../WidgetCurrency/WidgetCurrency';
 import WidgetTime from '../WidgetTime/WidgetTime';
 import WidgetWeather from '../WidgetWeather/WidgetWeather';
+import WidgetMap from '../WidgetMap/WidgetMap';
 
 import ListOfFlight from './List';
 import Slider from './Slider';
@@ -40,6 +41,7 @@ const Home = ({ isLoading, quitAction }) => {
           <WidgetTime zone="Africa/Johannesburg" lang="ru-RU" />
           <WidgetWeather city="Претория" lang="ru-RU" />
           <WidgetCurrency currency="ZAR" lang="ru-RU" />
+          <WidgetMap country="IND" lang="fr-FR" />
         </div>
         <div className={styles['home-content-wrapper']}>
           <Slider />
@@ -59,9 +61,3 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
-
-/*
-<div className={styles['home-content-wrapper']}>
-<WidgetTime zone="Europe/Minsk" lang="ru-RU" />
-</div>
-*/
