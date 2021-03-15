@@ -14,7 +14,7 @@ const RegistrationForm = ({ authAction }) => {
     history.push('/login');
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     const form = event.currentTarget;
     if (form.checkValidity()) {
       history.push('/');
@@ -37,14 +37,19 @@ const RegistrationForm = ({ authAction }) => {
             id="back-to-login-btn"
             type="button"
           >
-            <img className={styles['back-to-login-icon']} src="../../assets/image/logout_icon.png" alt="back-to-login"/> Назад
+            <img
+              className={styles['back-to-login-icon']}
+              src="../../assets/image/logout_icon.png"
+              alt="back-to-login"
+            />{' '}
+            Назад
           </Button>
         </div>
         <Form
           noValidate
           validated={validated}
           className={styles['form']}
-          onSubmit={event => {
+          onSubmit={(event) => {
             handleSubmit(event);
           }}
         >
@@ -60,9 +65,7 @@ const RegistrationForm = ({ authAction }) => {
               id="user-name"
             />
             <Form.Control.Feedback>Готово!</Form.Control.Feedback>
-            <Form.Control.Feedback type="invalid">
-              Введите корректное имя
-            </Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid">Введите корректное имя</Form.Control.Feedback>
           </Form.Group>
           <Form.Group>
             <Form.Label htmlFor="login" className={styles['form__label']}>
@@ -76,9 +79,7 @@ const RegistrationForm = ({ authAction }) => {
               id="user-surname"
             />
             <Form.Control.Feedback>Готово!</Form.Control.Feedback>
-            <Form.Control.Feedback type="invalid">
-              Введит корректную фамилию
-            </Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid">Введит корректную фамилию</Form.Control.Feedback>
           </Form.Group>
           <Form.Group>
             <Form.Label htmlFor="login" className={styles['form__label']}>

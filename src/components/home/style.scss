@@ -28,7 +28,7 @@
 .header {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   width: 95vw;
   height: 69px;
 }
@@ -47,6 +47,37 @@
 .quit-icon {
 }
 
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.widgets-wrapper {
+  display: flex;
+  position: absolute;
+  left: -300px;
+  transform: translateX(-300px);
+  transition: transform 0.5s ease-in-out;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 300px;
+}
+
+.widgets-wrapper_active {
+  display: flex;
+  position: absolute;
+  left: -300px;
+  transform: translateX(300px);
+  transition: transform 0.5s ease-in-out;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 300px;
+}
+
 .home-content-wrapper {
   display: flex;
   flex-direction: column;
@@ -57,184 +88,4 @@
   background: #ffffff;
   box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
-}
-
-.slider-title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 594px;
-  height: 100px;
-}
-
-.slider-title__route {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 350px;
-  font-family: Roboto;
-  font-weight: 500;
-  font-size: 32px;
-  line-height: 37px;
-  color: #424242;
-}
-
-.calendar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-family: 'SF Pro Text';
-  font-weight: 600;
-  font-size: 25px;
-  line-height: 22px;
-  letter-spacing: -0.408px;
-  color: #1157a7;
-}
-
-.picker {
-  border: none;
-}
-
-.button-reload {
-  display: flex;
-  align-items: center;
-  background: none;
-  border: none;
-  width: 34px;
-  padding: 0 0 5px 0;
-}
-
-.button-reload_img {
-  width: 26px;
-}
-
-.slider-image {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.flight-list-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  font-family: 'SF Pro Text';
-  font-weight: 300;
-}
-
-.flight-list-title {
-  font-size: 17px;
-  line-height: 22px;
-  letter-spacing: -0.408px;
-  color: #424242;
-}
-
-.flight-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.scrollbar::-webkit-scrollbar {
-  width: 2px;
-}
-
-.scrollbar::-webkit-scrollbar-track {
-  background: #e7e7e7;
-  border-radius: 2px;
-}
-
-.scrollbar::-webkit-scrollbar-thumb {
-  background: #1157a7;
-  border-radius: 2px;
-}
-
-.flight-list-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 3px 5px;
-  margin: 15px 0;
-  border-bottom: solid 1px rgba(135, 135, 135, 0.2);
-}
-
-.flight-list-item_plane-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 64px;
-  height: 64px;
-  border-radius: 100%;
-  background: rgba(0, 119, 255, 0.05);
-}
-
-.flight-list-item-description {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-
-.flight-list-item-description__route {
-  font-size: 17px;
-  line-height: 22px;
-  letter-spacing: -0.408px;
-  color: #424242;
-}
-
-.flight-list-item-description__date {
-  font-size: 14px;
-  line-height: 22px;
-  letter-spacing: -0.408px;
-  color: #878787;
-}
-
-.flight-list-item-description__airline {
-  font-size: 14px;
-  line-height: 22px;
-  letter-spacing: -0.408px;
-  color: #878787;
-}
-
-.flight-list-item__price {
-  font-weight: normal;
-  font-size: 17px;
-  line-height: 22px;
-  letter-spacing: -0.408px;
-  color: #424242;
-}
-
-.flight-list-item__price_label {
-  font-weight: 300;
-  font-size: 11px;
-  line-height: 22px;
-  letter-spacing: -0.408px;
-  color: #878787;
-}
-
-.flight-list-item-favorites {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: space-between;
-}
-
-.favorite-button {
-  background: none;
-}
-
-.favorite-button__icon {
-  background: none;
-}
-
-.picker {
-  border: none;
-  color: #1157a7;
-  letter-spacing: -0.408px;
-  font-family: SF Pro Text;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 25px;
-  line-height: 22px;
 }

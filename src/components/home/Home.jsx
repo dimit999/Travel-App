@@ -1,63 +1,62 @@
-import React from 'react';
+/* eslint-disable no-console */
+import React, { useState } from 'react';
+import { Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router';
+import { useHistory } from 'react-router-dom';
 
 import styles from '@/components/home/style.scss';
-import { quitAction } from '@/redux/actions';
 
-import Loader from '../Loader/Loader';
-import WidgetCurrency from '../WidgetCurrency/WidgetCurrency';
-import WidgetTime from '../WidgetTime/WidgetTime';
-import WidgetWeather from '../WidgetWeather/WidgetWeather';
-import WidgetMap from '../WidgetMap/WidgetMap';
+import Footer from './Footer/Footer';
+import LanguageSwitcher from './Header/LanguageSwitcher';
+import Logo from './Header/Logo';
+import QuitButton from './Header/QuitButton';
+import Search from './Header/Search';
+import CountryCard from './Main/CountryCard';
+import Widgets from './Widgets/Widgets';
 
-import ListOfFlight from './List';
-import Slider from './Slider';
-
-const Home = ({ isLoading, quitAction }) => {
+const Home = () => {
+  const [widgetIsActive, setWidgetIsActive] = useState(false);
   const history = useHistory();
 
+  const widgetCheckboxHandler = () => {
+    setWidgetIsActive(!widgetIsActive);
+  };
+
   return (
-    <React.Fragment>
+    <>
       <div className={styles['home-page-wrapper']}>
-        <div className={styles['header']}>
-          <button
-            className={styles['quit-button']}
-            type="button"
-            onClick={() => {
-              history.push('/login');
-              quitAction();
-            }}
-          >
-            Выйти
-            <img
-              className={styles['quit-icon']}
-              src="../../assets/image/logout_icon.png"
-              alt="logaut"
-            />
-          </button>
-        </div>
-        <div className={styles['home-content-wrapper']}>
-          <WidgetTime zone="Africa/Johannesburg" lang="ru-RU" />
-          <WidgetWeather city="Претория" lang="ru-RU" />
-          <WidgetCurrency currency="ZAR" lang="ru-RU" />
-          <WidgetMap country="IND" lang="fr-FR" />
-        </div>
-        <div className={styles['home-content-wrapper']}>
-          <Slider />
-          {isLoading ? <Loader /> : <ListOfFlight />}
-        </div>
+        <header className={styles['header']}>
+          <Logo />
+          <Search />
+          <LanguageSwitcher />
+          <QuitButton />
+        </header>
+
+        <main className={styles['main']}>
+          <div className={widgetIsActive? styles['widgets-wrapper_active'] : styles['widgets-wrapper']}>
+            <Widgets />
+          </div>
+          <div>
+            <Form>
+              <Form.Check
+                type="switch"
+                id="custom-switch"
+                label="Виджеты"
+                onChange={widgetCheckboxHandler}
+              />
+            </Form>
+          </div>
+          <div className={styles['home-content-wrapper']}>
+            <CountryCard onClick={() => history.push('/country')} name="Russia" capital="Moscow" />
+          </div>
+        </main>
+
+        <footer className={styles['footer']}>
+          <Footer />
+        </footer>
       </div>
-    </React.Fragment>
+    </>
   );
 };
 
-const mapStateToProps = state => ({
-  isLoading: state.loaderReducer.isLoading,
-});
-
-const mapDispatchToProps = {
-  quitAction,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(null, null)(Home);

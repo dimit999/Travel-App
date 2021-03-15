@@ -1,14 +1,14 @@
 import {
-  DATE_DEFAULT,
-  DATE_PICKER,
-  DEFAULT_REQUEST,
-  FAVORITE,
+  WEATHER_PROPS,
+  CURRENCY_PROPS,
   LOADER_OFF,
   LOADER_ON,
   LOGIN,
   QUIT,
-  REQUEST,
-  RESPONSE,
+  WEATHER_REQUEST,
+  WEATHER_DATA,
+  RATE,
+  CURRENCY_REQUEST,
 } from './constants';
 
 const authAction = () => ({
@@ -19,51 +19,53 @@ const quitAction = () => ({
   type: QUIT,
 });
 
-const defaultFlightRequestAction = () => ({
-  type: DEFAULT_REQUEST,
+const weatherRequestAction = () => ({
+  type: WEATHER_REQUEST,
 });
 
-const dateDefaultAction = date => ({
-  type: DATE_DEFAULT,
-  payload: date,
+const currencyRequestAction = () => ({
+  type: CURRENCY_REQUEST,
 });
 
-const fetchFlightAction = () => ({
-  type: REQUEST,
+const dispatchWeatherPropsToSaga = (weatherProps) => ({
+  type: WEATHER_PROPS,
+  payload: weatherProps,
 });
 
-const datePickerAction = date => ({
-  type: DATE_PICKER,
-  payload: date,
+const dispatchCurrencyPropsToSaga = (currencyProps) => ({
+  type: CURRENCY_PROPS,
+  payload: currencyProps,
 });
 
-const fetchFlightResponse = response => ({
-  type: RESPONSE,
-  payload: response,
+const fetchWeatherResponse = (weatherData) => ({
+  type: WEATHER_DATA,
+  payload: weatherData,
 });
 
-const showLoaderAction = () => ({
+const fetchCurrencyResponse = (rate) => ({
+  type: RATE,
+  payload: rate,
+});
+
+const showLoaderAction = (loaderType) => ({
   type: LOADER_ON,
+  loaderType,
 });
 
-const hideLoaderAction = () => ({
+const hideLoaderAction = (loaderType) => ({
   type: LOADER_OFF,
-});
-
-const isFavorite = favorites => ({
-  type: FAVORITE,
-  payload: favorites,
+  loaderType,
 });
 
 export {
   authAction,
   quitAction,
-  fetchFlightAction,
+  weatherRequestAction,
+  currencyRequestAction,
+  dispatchWeatherPropsToSaga,
+  dispatchCurrencyPropsToSaga,
+  fetchWeatherResponse,
+  fetchCurrencyResponse,
   showLoaderAction,
-  fetchFlightResponse,
-  defaultFlightRequestAction,
-  dateDefaultAction,
-  datePickerAction,
   hideLoaderAction,
-  isFavorite,
 };

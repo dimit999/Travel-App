@@ -10,7 +10,7 @@ import { getErrors } from './authErrorEnum';
 
 export default class Auth {
   AuthStateChanged() {
-    auth.onAuthStateChanged(user => {
+    auth.onAuthStateChanged((user) => {
       if (user) {
         localStorage.setItem('uidTravel', user.uid);
       } else {
@@ -34,14 +34,14 @@ export default class Auth {
       // sign up the user & add firestore data
       auth
         .createUserWithEmailAndPassword(mail, password)
-        .then(cred =>
+        .then((cred) =>
           db.collection('Users').doc(cred.user.uid).set({
             fullName: signupForm['input-fio'].value,
             mail: signupForm['input-email'].value,
             description: signupForm['input-group'].value,
             type: 'student',
             password,
-          }),
+          })
         )
         .then(() =>
           fetch('/api/sendMail', {
@@ -50,12 +50,12 @@ export default class Auth {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({ mail, name: signupForm['input-fio'].value }),
-          }),
+          })
         )
         .then(() => {
           document.location.href = './main/student/results';
         })
-        .catch(er => {
+        .catch((er) => {
           document.querySelector('#errServ').innerHTML = getErrors(er.code) || er.message;
         });
     });
@@ -72,7 +72,7 @@ export default class Auth {
 
   goLogin() {
     this.AuthStateChanged();
-    const checkStatus = status => {
+    const checkStatus = (status) => {
       db.collection('Users').doc(status).get();
       // .then((doc) => {
       //   if (doc.data().type === 'student') {
@@ -100,10 +100,10 @@ export default class Auth {
       // log the user in
       auth
         .signInWithEmailAndPassword(mail, password)
-        .then(cred => {
+        .then((cred) => {
           checkStatus(cred.user.uid);
         })
-        .catch(er => {
+        .catch((er) => {
           document.querySelector('#errServ').innerHTML = getErrors(er.code) || er.message;
         });
     });
