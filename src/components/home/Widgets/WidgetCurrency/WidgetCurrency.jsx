@@ -13,6 +13,7 @@ const labels = {
     EUR: 'Euro',
     ZAR: 'South African Rand',
     INR: 'Indian Rupee',
+    GBP: 'Pound Sterling',
   },
   'fr-FR': {
     currency: 'Monnaie',
@@ -23,6 +24,7 @@ const labels = {
     EUR: 'Euro',
     ZAR: 'Rand sud-africain',
     INR: 'Roupie indienne',
+    GBP: 'Livre sterling',
   },
   'ru-RU': {
     currency: 'Валюта',
@@ -33,6 +35,7 @@ const labels = {
     EUR: 'Евро',
     ZAR: 'Южноафриканский рэнд',
     INR: 'Индийская рупия',
+    GBP: 'Фунт стерлингов',
   },
 };
 

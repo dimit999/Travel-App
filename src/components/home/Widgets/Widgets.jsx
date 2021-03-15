@@ -11,6 +11,7 @@ import {
 } from '../../../redux/actions';
 import Loader from '../../Loader/Loader';
 
+import WidgetMap from './WidgetMap/WidgetMap';
 import WidgetCurrency from './WidgetCurrency/WidgetCurrency';
 import WidgetTime from './WidgetTime/WidgetTime';
 import WidgetWeather from './WidgetWeather/WidgetWeather';
@@ -53,6 +54,8 @@ const Widgets = (props) => {
       ) : (
         <WidgetWeather city={weatherProps.city} lang={weatherProps.lang} />
       )}
+
+      <WidgetMap lang ="ru-RU" country="FRA"/>
     </div>
   );
 };

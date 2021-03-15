@@ -5,6 +5,7 @@ import fetchCurrencyReducer from './fetchCurrencyReducer';
 import fetchWeatherReducer from './fetchWeatherReducer';
 import loaderReducer from './loaderReducer';
 import registrationReducer from './registrationReducer';
+import switchLanguageReducer from './switchLanguageReducer';
 
 const rootReducer = combineReducers({
   authReducer,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   registrationReducer,
   fetchWeatherReducer,
   fetchCurrencyReducer,
+  switchLanguageReducer,
 });
 
 export default rootReducer;
