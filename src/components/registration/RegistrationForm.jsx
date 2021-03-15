@@ -7,23 +7,19 @@ import styles from '@/components/registration/style.scss';
 import { authAction } from '@/redux/actions';
 
 import Auth from '../../utils/Authorization/auth';
-// import Event from '../../events';
 
 const RegistrationForm = ({ authAction, isRegistration }) => {
   const [validated, setValidated] = useState(false);
   const [registration, setRegistration] = useState(false);
   const history = useHistory();
 
-  // const event = new Event();
   const auth = new Auth();
 
   useEffect(() => {
-    // event.renderValidSignUp();
     auth.goSignUp();
   }, [])
 
   useEffect(() => {
-    // event.renderValidSignUp();
     setRegistration(true);
   }, [isRegistration])
 
@@ -35,10 +31,12 @@ const RegistrationForm = ({ authAction, isRegistration }) => {
 
   const handleSubmit = event => {
     const form = event.currentTarget;
-    debugger
+    // debugger
     if (form.checkValidity() && registration) {
       history.push('/');
-      authAction();
+      if (isRegistration) { //isRegistration кидает всегда на login, registration всегда на Home
+        authAction();
+      }
     } else {
       event.preventDefault();
       event.stopPropagation();
@@ -83,7 +81,6 @@ const RegistrationForm = ({ authAction, isRegistration }) => {
             <Form.Control.Feedback type="invalid">
               Введите корректное имя
             </Form.Control.Feedback>
-            {/* <div className="error" id="fioErr"></div> */}
           </Form.Group>
           <Form.Group>
             <Form.Label htmlFor="login" className={styles['form__label']}>
@@ -100,7 +97,7 @@ const RegistrationForm = ({ authAction, isRegistration }) => {
             <Form.Control.Feedback type="invalid">
               Введит корректную фамилию
             </Form.Control.Feedback>
-            {/* <div className="error" id="infoErr"></div> */}
+
           </Form.Group>
           <Form.Group>
             <Form.Label htmlFor="login" className={styles['form__label']}>
@@ -117,7 +114,6 @@ const RegistrationForm = ({ authAction, isRegistration }) => {
             <Form.Control.Feedback type="invalid">
               Электронная почта в формате Your@e-mail.com
             </Form.Control.Feedback>
-            {/* <div className="error" id="emailErr"></div> */}
           </Form.Group>
           <Form.Group>
             <Form.Label htmlFor="password" className={styles['form__label']}>
@@ -134,7 +130,6 @@ const RegistrationForm = ({ authAction, isRegistration }) => {
             <Form.Control.Feedback type="invalid">
               Только цифры (от 8 до 16 символов)
             </Form.Control.Feedback>
-            {/* <div className="error" id="passErr"></div> */}
           </Form.Group>
           <div className={styles['buttons-wrapper']}>
             <Button className={styles['submit-button']} id="registration-btn-regForm" type="submit">

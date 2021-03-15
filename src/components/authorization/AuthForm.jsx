@@ -1,4 +1,4 @@
-import React, { FormEvent, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -6,33 +6,24 @@ import { useHistory } from 'react-router-dom';
 import styles from '@/components/authorization/style.scss';
 import { authAction } from '@/redux/actions';
 
-import { FirebaseDB } from '../../utils/FirebaseDB/FirebaseDB';
-
 import Auth from '../../utils/Authorization/auth';
-// import Event from '../../events';
 
 const AuthForm = ({ authAction, isRegistration }) => {
   const [validated, setValidated] = useState(false);
   const [registration, setRegistration] = useState(false);
   const history = useHistory();
-  // const firebaseDB = new FirebaseDB();
-  // const event = new Event();
   const auth = new Auth();
-
-  // const [languageArray, setLang] = useState([]);
 
   const registrationHandler = () => {
     history.push('/registration');
   };
 
   useEffect(() => {
-    // event.renderValidLogin();
     auth.goLogin();
   }, [])
 
 
   useEffect(() => {
-    // event.renderValidSignUp();
     setRegistration(true);
   }, [isRegistration])
 
@@ -41,21 +32,15 @@ const AuthForm = ({ authAction, isRegistration }) => {
     const form = event.currentTarget;
     if (form.checkValidity() && isRegistration) {
       history.push('/');
-      authAction();
+      if (isRegistration) {
+        authAction();
+      }
     } else {
       event.preventDefault();
       event.stopPropagation();
     }
     setValidated(true);
   };
-
-  // const getLang = async () => {
-  //   await firebaseDB.getData('Language').then((data) => {
-  //     setLang(data[0]['ru']);
-  //   });
-  // };
-
-  // getLang();
 
   return (
     <React.Fragment>
@@ -122,12 +107,6 @@ const AuthForm = ({ authAction, isRegistration }) => {
     </React.Fragment>
   );
 };
-
-// const mapDispatchToProps = {
-//   authAction,
-// };
-
-// export default connect(null, mapDispatchToProps)(AuthForm);
 
 const mapStateToProps = state => ({
   isRegistration: state.registrationReducer.isRegistration,
