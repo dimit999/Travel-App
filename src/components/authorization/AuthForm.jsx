@@ -24,20 +24,22 @@ const AuthForm = ({ authAction, isRegistration }) => {
 
 
   useEffect(() => {
-    setRegistration(true);
+    if (isRegistration) {
+      authAction();
+      history.push('/');
+    }
   }, [isRegistration])
 
 
   const handleSubmit = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
     const form = event.currentTarget;
     if (form.checkValidity() && isRegistration) {
       history.push('/');
       if (isRegistration) {
         authAction();
       }
-    } else {
-      event.preventDefault();
-      event.stopPropagation();
     }
     setValidated(true);
   };

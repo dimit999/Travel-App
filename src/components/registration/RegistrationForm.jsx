@@ -20,7 +20,10 @@ const RegistrationForm = ({ authAction, isRegistration }) => {
   }, [])
 
   useEffect(() => {
-    setRegistration(true);
+    if (isRegistration) {
+      authAction();
+      history.push('/');
+    }
   }, [isRegistration])
 
   const loginHandler = () => {
@@ -28,17 +31,15 @@ const RegistrationForm = ({ authAction, isRegistration }) => {
   };
 
   const handleSubmit = event => {
+    event.preventDefault();
+    event.stopPropagation();
     const form = event.currentTarget;
     // debugger
-    if (form.checkValidity() && registration) {
-      history.push('/');
-      if (isRegistration) { //isRegistration кидает всегда на login, registration всегда на Home
-        authAction();
-      }
-    } else {
-      event.preventDefault();
-      event.stopPropagation();
-    }
+    // if (form.checkValidity() && isRegistration) {
+    //   // if (isRegistration) { //isRegistration кидает всегда на login, registration всегда на Home
+    //     authAction();
+    //   // }
+    // }
     setValidated(true);
   };
 
