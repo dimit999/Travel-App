@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -7,45 +7,42 @@ import styles from '@/components/authorization/style.scss';
 import { authAction } from '@/redux/actions';
 
 import Auth from '../../utils/Authorization/auth';
-import { FirebaseDB } from '../../utils/FirebaseDB/FirebaseDB';
 
-const AuthForm = ({ authAction }) => {
+const AuthForm = ({ authAction, isRegistration }) => {
   const [validated, setValidated] = useState(false);
+  const [registration, setRegistration] = useState(false);
   const history = useHistory();
-  const firebaseDB = new FirebaseDB();
   const auth = new Auth();
-
-  const [languageArray, setLang] = useState([]);
 
   const registrationHandler = () => {
     history.push('/registration');
   };
 
-  const handleSubmit = (event) => {
-    const form = event.currentTarget;
-    if (form.checkValidity()) {
-      history.push('/home');
+  useEffect(() => {
+    auth.goLogin();
+  }, [])
+
+
+  useEffect(() => {
+    if (isRegistration) {
       authAction();
-    } else {
-      event.preventDefault();
-      event.stopPropagation();
+      history.push('/home');
     }
+  }, [isRegistration])
+
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    const form = event.currentTarget;
+//     if (form.checkValidity()) {}
     setValidated(true);
   };
-
-  const getLang = async () => {
-    await firebaseDB.getData('Language').then((data) => {
-      setLang(data[0]['ru']);
-    });
-  };
-
-  getLang();
 
   return (
     <>
       <div className={styles['form-wrapper']} id="form-login">
         <h1 className={styles['form-title']}>Travel-App</h1>
-        <div className="errorServ" id="errServ"></div>
         <Form
           noValidate
           validated={validated}
@@ -56,7 +53,7 @@ const AuthForm = ({ authAction }) => {
         >
           <Form.Group>
             <Form.Label htmlFor="login" className={styles['form__label']}>
-              Логин:
+              Email:
             </Form.Label>
             <Form.Control
               className={styles['form__input']}
@@ -79,7 +76,6 @@ const AuthForm = ({ authAction }) => {
               className={styles['form__input']}
               type="password"
               id="password"
-              pattern="\d{8,16}"
             />
             <Form.Control.Feedback>Готово!</Form.Control.Feedback>
             <Form.Control.Feedback type="invalid">
@@ -101,14 +97,19 @@ const AuthForm = ({ authAction }) => {
               Войти
             </Button>
           </div>
+          <div className={styles['errorServ']} id="errServ"></div>
         </Form>
       </div>
     </>
   );
 };
 
+const mapStateToProps = state => ({
+  isRegistration: state.registrationReducer.isRegistration,
+});
+
 const mapDispatchToProps = {
   authAction,
 };
 
-export default connect(null, mapDispatchToProps)(AuthForm);
+export default connect(mapStateToProps, mapDispatchToProps)(AuthForm);

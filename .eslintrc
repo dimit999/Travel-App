@@ -96,6 +96,7 @@
     "prefer-const": "error",
     "prefer-spread": "error",
     "prefer-object-spread": "error",
+    "eslint-disable-next-line": "arrow-parens",
     "prefer-destructuring": [
       "error",
       {

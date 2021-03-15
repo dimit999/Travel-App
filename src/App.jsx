@@ -7,7 +7,6 @@ import Home from './components/home/Home';
 import CountryCard from './components/home/Main/CountryCard';
 import Registration from './components/registration/Registration';
 
-
 const App = ({ isAuth }) => {
   const RouteHome = () => {
     if (isAuth) {

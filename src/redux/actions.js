@@ -5,6 +5,7 @@ import {
   LOADER_ON,
   LOGIN,
   QUIT,
+  REGISTRATION_SUCCESS,
   WEATHER_REQUEST,
   WEATHER_DATA,
   RATE,
@@ -57,6 +58,10 @@ const hideLoaderAction = (loaderType) => ({
   loaderType,
 });
 
+const registrationSuccess = () => ({
+  type: REGISTRATION_SUCCESS,
+});
+
 export {
   authAction,
   quitAction,
@@ -68,4 +73,5 @@ export {
   fetchCurrencyResponse,
   showLoaderAction,
   hideLoaderAction,
+  registrationSuccess,
 };
