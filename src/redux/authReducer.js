@@ -3,10 +3,10 @@ import { auth } from '../utils/FirebaseDB/FirebaseDB';
 
 function localStorageAuth() {
   // debugger
-  switch (localStorage.getItem('isAuth') === 'true') {
-    case true:
+  switch (localStorage.getItem('isAuth')) {
+    case LOGIN_TRUE:
       return true;
-    case false:
+    case LOGIN_FALSE:
       localStorage.removeItem('uidTravel');
       return false;
     default:
@@ -16,10 +16,11 @@ function localStorageAuth() {
 }
 
 const initialState = {
-  auth: false,
+  auth: localStorageAuth(),
 };
 
 const authReducer = (state = initialState, action) => {
+  // debugger
   switch (action.type) {
     case LOGIN:
       return { ...state, auth: true };

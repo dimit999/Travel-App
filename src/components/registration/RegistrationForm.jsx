@@ -23,8 +23,6 @@ const RegistrationForm = ({ authAction, isRegistration }) => {
     setRegistration(true);
   }, [isRegistration])
 
-
-
   const loginHandler = () => {
     history.push('/login');
   };
