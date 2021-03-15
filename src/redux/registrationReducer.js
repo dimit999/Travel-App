@@ -11,7 +11,7 @@ const registrationReducer = (state = initialState, action) => {
     case QUIT:
       return { ...state, isRegistration: false };
     default:
-      return { ...state, isRegistration: false };
+      return state;
   }
 };
 

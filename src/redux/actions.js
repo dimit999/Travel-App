@@ -10,6 +10,7 @@ import {
   WEATHER_DATA,
   RATE,
   CURRENCY_REQUEST,
+  SWITCH_LANGUAGE,
 } from './constants';
 
 const authAction = () => ({
@@ -62,6 +63,11 @@ const registrationSuccess = () => ({
   type: REGISTRATION_SUCCESS,
 });
 
+const switchLanguageAction = (language) => ({
+  type: SWITCH_LANGUAGE,
+  payload: language,
+});
+
 export {
   authAction,
   quitAction,
@@ -74,4 +80,5 @@ export {
   showLoaderAction,
   hideLoaderAction,
   registrationSuccess,
+  switchLanguageAction,
 };
