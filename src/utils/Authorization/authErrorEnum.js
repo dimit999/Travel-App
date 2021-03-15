@@ -16,8 +16,8 @@ export const errorsAuth = [
   },
   { value: 'auth/user-not-found', name: 'Данный пользователь не существует' },
 ];
-export const getErrors = value => {
-  const error = errorsAuth.find(x => x.value === value);
+export const getErrors = (value) => {
+  const error = errorsAuth.find((x) => x.value === value);
   if (error) {
     return error.name;
   }

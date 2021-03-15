@@ -14,7 +14,7 @@ import { registrationSuccess } from '../../redux/actions'
 
 export default class Auth {
   AuthStateChanged() {
-    auth.onAuthStateChanged(user => {
+    auth.onAuthStateChanged((user) => {
       if (user) {
         localStorage.setItem('uidTravel', user.uid);
       } else {
@@ -36,13 +36,13 @@ export default class Auth {
       // sign up the user & add firestore data
       auth
         .createUserWithEmailAndPassword(mail, password)
-        .then(cred =>
+        .then((cred) =>
           db.collection('Users').doc(cred.user.uid).set({
             firstName,
             secondName,
             mail,
             password,
-          }),
+          })
         )
         .then(() => {
           localStorage.setItem('isAuth', 'true');

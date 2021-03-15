@@ -26,7 +26,7 @@ const AuthForm = ({ authAction, isRegistration }) => {
   useEffect(() => {
     if (isRegistration) {
       authAction();
-      history.push('/');
+      history.push('/home');
     }
   }, [isRegistration])
 
@@ -35,17 +35,12 @@ const AuthForm = ({ authAction, isRegistration }) => {
     event.preventDefault();
     event.stopPropagation();
     const form = event.currentTarget;
-    if (form.checkValidity() && isRegistration) {
-      history.push('/');
-      if (isRegistration) {
-        authAction();
-      }
-    }
+//     if (form.checkValidity()) {}
     setValidated(true);
   };
 
   return (
-    <React.Fragment>
+    <>
       <div className={styles['form-wrapper']} id="form-login">
         <h1 className={styles['form-title']}>Travel-App</h1>
         <Form
@@ -105,7 +100,7 @@ const AuthForm = ({ authAction, isRegistration }) => {
           <div className={styles['errorServ']} id="errServ"></div>
         </Form>
       </div>
-    </React.Fragment>
+    </>
   );
 };
 

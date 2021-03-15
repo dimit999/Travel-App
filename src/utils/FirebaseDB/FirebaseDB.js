@@ -24,8 +24,8 @@ export class FirebaseDB {
     await db
       .collection(table)
       .get()
-      .then(snapshot => {
-        snapshot.docs.forEach(doc => {
+      .then((snapshot) => {
+        snapshot.docs.forEach((doc) => {
           const dataObject = doc.data();
           dataObject.id = doc.id;
           list.push(dataObject);
@@ -45,7 +45,7 @@ export class FirebaseDB {
       .collection(table)
       .doc(id)
       .get()
-      .then(snapshot => {
+      .then((snapshot) => {
         item = snapshot.data();
         this.itemByID = item;
       });
@@ -90,7 +90,7 @@ export class FirebaseDB {
    */
   deleteItems(classItem, id) {
     const data = document.querySelectorAll(`${classItem}`);
-    data.forEach(item => {
+    data.forEach((item) => {
       if (item.getAttribute('data-id') === id) {
         item.remove();
       }
