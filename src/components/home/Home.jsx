@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -13,10 +13,21 @@ import QuitButton from './Header/QuitButton';
 import Search from './Header/Search';
 import CountryCard from './Main/CountryCard';
 import Widgets from './Widgets/Widgets';
+import countriesAtlas from '../../assets/atlases/countriesAtlas';
 
 const Home = () => {
   const [widgetIsActive, setWidgetIsActive] = useState(false);
+  const [countries, setCountries] = useState(countriesAtlas);
+  const [searchValue, setSearchValue] = useState('');
   const history = useHistory();
+
+  useEffect(() => {
+    setCountries(countriesAtlas)
+  }, [])
+
+  const searchHandler = (e) => {
+    setSearchValue(e.target.value);
+  };
 
   const widgetCheckboxHandler = () => {
     setWidgetIsActive(!widgetIsActive);
@@ -27,7 +38,7 @@ const Home = () => {
       <div className={styles['home-page-wrapper']}>
         <header className={styles['header']}>
           <Logo />
-          <Search />
+          <Search onChange={searchHandler} searchValue={searchValue}/>
           <LanguageSwitcher />
           <QuitButton />
         </header>
@@ -47,7 +58,24 @@ const Home = () => {
             </Form>
           </div>
           <div className={styles['home-content-wrapper']}>
-            <CountryCard onClick={() => history.push('/country')} name="Russia" capital="Moscow" />
+            {
+              countries.map((country) => {
+                if (searchValue === '') {
+                  return <CountryCard
+                    onClick={() => history.push('/country')}
+                    name={country.name}
+                    capital={country.capital}
+                  />
+                }
+                if (country.name.includes(searchValue) || country.capital.includes(searchValue)) {
+                  return <CountryCard
+                    onClick={() => history.push('/country')}
+                    name={country.name}
+                    capital={country.capital}
+                  />
+                }
+              })
+            }
           </div>
         </main>
 
