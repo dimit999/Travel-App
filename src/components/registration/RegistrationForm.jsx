@@ -34,7 +34,6 @@ const RegistrationForm = ({ authAction, isRegistration }) => {
     event.preventDefault();
     event.stopPropagation();
     const form = event.currentTarget;
-    // debugger
     // if (form.checkValidity() && isRegistration) {
     //   // if (isRegistration) { //isRegistration кидает всегда на login, registration всегда на Home
     //     authAction();
@@ -123,7 +122,6 @@ const RegistrationForm = ({ authAction, isRegistration }) => {
               className={styles['form__input']}
               type="password"
               id="password-reg-form"
-              // pattern="\d{8,16}"
             />
             <Form.Control.Feedback>Готово!</Form.Control.Feedback>
             <Form.Control.Feedback type="invalid">

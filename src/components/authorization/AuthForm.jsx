@@ -81,7 +81,6 @@ const AuthForm = ({ authAction, isRegistration }) => {
               className={styles['form__input']}
               type="password"
               id="password"
-              // pattern="\d{8,16}"
             />
             <Form.Control.Feedback>Готово!</Form.Control.Feedback>
             <Form.Control.Feedback type="invalid">
