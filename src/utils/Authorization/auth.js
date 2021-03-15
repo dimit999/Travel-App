@@ -16,10 +16,8 @@ export default class Auth {
   AuthStateChanged() {
     auth.onAuthStateChanged(user => {
       if (user) {
-        // debugger
         localStorage.setItem('uidTravel', user.uid);
       } else {
-        // setupUI();
         localStorage.removeItem('uidTravel');
       }
     });
@@ -28,7 +26,6 @@ export default class Auth {
   goSignUp() {
     this.AuthStateChanged();
     // signup
-    // const signupForm = document.querySelector('#form-singup');
     document.querySelector('#registration-btn-regForm').addEventListener('click', () => {
       // get user info
       const mail = document.querySelector('#login-reg-form').value;
@@ -47,15 +44,6 @@ export default class Auth {
             password,
           }),
         )
-        // .then(() =>
-        //   fetch('/api/sendMail', {
-        //     method: 'POST',
-        //     headers: {
-        //       'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify({ mail, name: document.querySelector('#user-name').value }),
-        //   }),
-        // )
         .then(() => {
           localStorage.setItem('isAuth', 'true');
           store.dispatch(registrationSuccess())
@@ -67,39 +55,10 @@ export default class Auth {
     });
   }
 
-  // static goLogout() {
-  //   // logout
-  //   const logout = document.querySelector('#logout');
-  //   logout.addEventListener('click', () => {
-  //     auth.signOut();
-  //     localStorage.removeItem('uidTravel');
-  //   });
-  // }
 
   goLogin() {
     this.AuthStateChanged();
-    const checkStatus = status => {
-      db.collection('Users').doc(status).get();
-      localStorage.setItem('isAuth', 'true');
-      store.dispatch(registrationSuccess())
-      // .then((doc) => {
-      //   if (doc.data().type === 'student') {
-      //     document.location.href = './main/student/results';
-      //   }
-      //   if (doc.data().type === 'admin') {
-      //     document.location.href = './main/admin/users';
-      //   }
-      //   if (doc.data().type === 'teacher') {
-      //     document.location.href = './main/teacher/group';
-      //   }
-      // });
-    };
-    // login
-    // const loginForm = document.querySelector('#form-login');
     document.querySelector('#login-btn').addEventListener('click', () => {
-
-      // debugger
-
       // get user info
       const mail = document.querySelector('#login').value;
       const password = document.querySelector('#password').value;
@@ -108,10 +67,16 @@ export default class Auth {
       auth
         .signInWithEmailAndPassword(mail, password)
         .then(cred => {
-          checkStatus(cred.user.uid);
-          // localStorage.setItem('isAuth', 'true');
+          localStorage.setItem('isAuth', 'true');
+          store.dispatch(registrationSuccess())
+          db.collection('Users')
+            .doc(cred.user.uid)
+            .get()
+            .then(() => {
+            });
         })
         .catch(er => {
+          localStorage.setItem('isAuth', 'false');
           document.querySelector('#errServ').innerHTML = getErrors(er.code) || er.message;
         });
     });

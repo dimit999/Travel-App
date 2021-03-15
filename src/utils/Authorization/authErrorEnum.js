@@ -14,7 +14,7 @@ export const errorsAuth = [
     name:
       'Доступ к этой учетной записи был временно отключен из-за множества неудачных попыток входа в систему. Вы можете немедленно восстановить его, сбросив пароль, или можете повторить попытку позже.',
   },
-  { value: ' auth/user-not-found', name: 'Данный пользователь не существует' },
+  { value: 'auth/user-not-found', name: 'Данный пользователь не существует' },
 ];
 export const getErrors = value => {
   const error = errorsAuth.find(x => x.value === value);

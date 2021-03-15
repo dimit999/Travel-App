@@ -12,17 +12,7 @@ db.settings({ timestampsInSnapshots: true });
 const auth = firebase.auth();
 
 export class FirebaseDB {
-  constructor() {
-    // this.usersArray = [];
-    // this.testsArray = [];
-    // this.lecturesArray = [];
-    // this.itemByID = {};
-  }
-
-  // async getLanguage() {
-  //   this.languageArray = await this.getData('Language');
-  //   return this.testsArray;
-  // }
+  constructor() {}
 
   /**
    * Get data from Firebase
@@ -86,8 +76,8 @@ export class FirebaseDB {
   /**
    * Delete item from Firebase
    * @param {eventElement} - element where will be called click/submit event.
-   * @param {table} - here is table where will be remooved an item.
-   * @param {id} - id of element (you shouod render to HTML data from firebase with ID - object with data and ID for each element is used in getData method)
+   * @param {table} - here is table where will be removed an item.
+   * @param {id} - id of element (you should render to HTML data from firebase with ID - object with data and ID for each element is used in getData method)
    */
   deleteItem(table, id) {
     db.collection(table).doc(id).delete();
@@ -95,8 +85,8 @@ export class FirebaseDB {
 
   /**
    * Delete items from Firebase
-   * @param {classItem} - class of elements which will help to take node elements for remooving data.
-   * @param {id} - id of element (you shouod render to HTML data from firebase with ID - object with data and ID for each element is used in getData method)
+   * @param {classItem} - class of elements which will help to take node elements for removing data.
+   * @param {id} - id of element (you should render to HTML data from firebase with ID - object with data and ID for each element is used in getData method)
    */
   deleteItems(classItem, id) {
     const data = document.querySelectorAll(`${classItem}`);
@@ -106,23 +96,6 @@ export class FirebaseDB {
       }
     });
   }
-
-  // /**
-  //  * Delete items from Firebase
-  //  * @param {classItem} - class of elements which will help to take node elements for remooving data.
-  //  * @param {id} - id of element (you shouod render to HTML data from firebase with ID - object with data and ID for each element is used in getData method)
-  //  */
-  // listenerFirebase(table, renderMethod) {
-  //   db.collection(table).onSnapshot((snapshot) => {
-  //     snapshot.docChanges().forEach((change) => {
-  //       if (change.type === 'added') {
-  //         renderMethod();
-  //       } else if (change.type === 'removed') {
-  //         renderMethod();
-  //       }
-  //     });
-  //   });
-  // }
 }
 
 export { db, auth };
