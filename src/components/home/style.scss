@@ -94,7 +94,7 @@
   display: flex;
 }
 
-.userName {
+.userName, .userNameGuest {
   margin-left: 8px;
   width: 40px;
 }
@@ -103,4 +103,8 @@
   width: auto;
   display: inline-block;
   white-space: nowrap;
+}
+
+.guestName {
+  margin-top: 9px;
 }

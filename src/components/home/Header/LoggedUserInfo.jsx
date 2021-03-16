@@ -4,7 +4,7 @@ import { FirebaseDB } from '../../../utils/FirebaseDB/FirebaseDB';
 
 import styles from '@/components/home/style.scss';
 
-const UserInfo = () => {
+const LoggedUserInfo = () => {
   const firebaseDB = new FirebaseDB();
   const [userInfo, setUserInfo] = useState({});
 
@@ -33,4 +33,4 @@ const UserInfo = () => {
   );
 };
 
-export default UserInfo;
+export default LoggedUserInfo;

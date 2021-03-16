@@ -10,12 +10,13 @@ import Footer from './Footer/Footer';
 import LanguageSwitcher from './Header/LanguageSwitcher';
 import Logo from './Header/Logo';
 import QuitButton from './Header/QuitButton';
-import UserInfo from './Header/UserInfo';
+import LoggedUserInfo from './Header/LoggedUserInfo';
+import GuestUserInfo from './Header/GuestUserInfo';
 import Search from './Header/Search';
 import CountryCard from './Main/CountryCard';
 import Widgets from './Widgets/Widgets';
 
-const Home = () => {
+const Home = ({ isAuth }) => {
   const [widgetIsActive, setWidgetIsActive] = useState(false);
   const history = useHistory();
 
@@ -30,7 +31,12 @@ const Home = () => {
           <Logo />
           <Search />
           <LanguageSwitcher />
-          <UserInfo />
+          {
+            isAuth
+              ? <LoggedUserInfo />
+              : <GuestUserInfo />
+          }
+          {/* <LoggedUserInfo /> */}
           <QuitButton />
         </header>
 
@@ -61,4 +67,10 @@ const Home = () => {
   );
 };
 
-export default connect(null, null)(Home);
+// export default connect(null, null)(Home);
+
+const mapStateToProps = state => ({
+  isAuth: state.authReducer.auth,
+});
+
+export default connect(mapStateToProps, null)(Home);
