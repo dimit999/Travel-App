@@ -1,19 +1,21 @@
 /* eslint-disable no-console */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import styles from '@/components/home/Main/CountryPage/style.scss';
+import styles from './style.scss';
 
 import Footer from '../../Footer/Footer';
 import LanguageSwitcher from '../../Header/LanguageSwitcher';
 import Logo from '../../Header/Logo';
 import QuitButton from '../../Header/QuitButton';
-import UserInfo from '../../Header/UserInfo';
+import EnterButton from '../../Header/EnterButton';
+import LoggedUserInfo from '../../Header/LoggedUserInfo';
+import GuestUserInfo from '../../Header/GuestUserInfo';
 import Widgets from '../../Widgets/Widgets';
 
-const Home = () => {
+const CountryPage = ({isAuth, language}) => {
   const [widgetIsActive, setWidgetIsActive] = useState(false);
 
   const history = useHistory();
@@ -23,13 +25,21 @@ const Home = () => {
   };
 
   return (
-    <>
+    <React.Fragment>
       <div className={styles['country-page-wrapper']}>
-        <header className={styles['header']}>
+      <header className={styles['header']}>
           <Logo />
           <LanguageSwitcher />
-          <UserInfo />
-          <QuitButton />
+          {
+            isAuth
+              ? <LoggedUserInfo />
+              : <GuestUserInfo />
+          }
+          {
+            isAuth
+              ? <QuitButton />
+              : <EnterButton />
+          }
         </header>
 
         <main className={styles['main']}>
@@ -76,8 +86,13 @@ const Home = () => {
           <Footer />
         </footer>
       </div>
-    </>
+    </React.Fragment>
   );
 };
 
-export default connect(null, null)(Home);
+const mapStateToProps = state => ({
+  isAuth: state.authReducer.auth,
+  language: state.switchLanguageReducer.language,
+});
+
+export default connect(mapStateToProps, null)(CountryPage);
