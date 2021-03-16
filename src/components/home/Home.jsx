@@ -33,7 +33,7 @@ const Home = ({ isAuth, language }) => {
       setWidgetsTitle('Виджеты');
     }
   }, [language])
-  
+
   useEffect(() => {
     setCountries(countriesAtlas)
   }, [])
