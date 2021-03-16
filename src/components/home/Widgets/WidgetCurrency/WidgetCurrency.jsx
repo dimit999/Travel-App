@@ -1,43 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {labels} from './constants';
 
 import styles from './widgetCurrency.scss';
-
-const labels = {
-  'en-US': {
-    currency: 'Currency',
-    USD: 'US Dollar',
-    CNY: 'Chinese Yuan',
-    AUD: 'Australian Dollar',
-    BRL: 'Brazilian Real',
-    EUR: 'Euro',
-    ZAR: 'South African Rand',
-    INR: 'Indian Rupee',
-    GBP: 'Pound Sterling',
-  },
-  'fr-FR': {
-    currency: 'Monnaie',
-    USD: 'Dollar des États-Unis',
-    CNY: 'Yuan chinois',
-    AUD: 'Dollar australien',
-    BRL: 'Réal brésilien',
-    EUR: 'Euro',
-    ZAR: 'Rand sud-africain',
-    INR: 'Roupie indienne',
-    GBP: 'Livre sterling',
-  },
-  'ru-RU': {
-    currency: 'Валюта',
-    USD: 'Доллар США',
-    CNY: 'Китайский юань',
-    AUD: 'Австралийский доллар',
-    BRL: 'Бразильский реал',
-    EUR: 'Евро',
-    ZAR: 'Южноафриканский рэнд',
-    INR: 'Индийская рупия',
-    GBP: 'Фунт стерлингов',
-  },
-};
 
 function WidgetCurrency(props) {
   const { exchangeRate } = props;

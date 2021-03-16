@@ -1,30 +1,10 @@
 import classnames from 'classnames';
 import React from 'react';
 import { connect } from 'react-redux';
+import { labels } from './constants';
 
 import weatherStyles from './owfont-regular.css';
 import styles from './widgetWeather.scss';
-
-const labels = {
-  'en-US': {
-    feelsLike: 'Feels like',
-    wind: 'Wind',
-    windSpeed: 'm/s',
-    humidity: 'Humidity',
-  },
-  'fr-FR': {
-    feelsLike: 'Ressenti',
-    wind: 'Vent',
-    windSpeed: 'm/s',
-    humidity: 'Humidité',
-  },
-  'ru-RU': {
-    feelsLike: 'Ощущается как',
-    wind: 'Ветер',
-    windSpeed: 'м/с',
-    humidity: 'Влажность',
-  },
-};
 
 function WidgetWeather(props) {
   const { weather } = props;

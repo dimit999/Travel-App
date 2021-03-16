@@ -19,12 +19,12 @@ import WidgetWeather from './WidgetWeather/WidgetWeather';
 const Widgets = (props) => {
   const weatherProps = {
     city: 'Саратов',
-    lang: 'ru-RU',
+    lang: props.language,
   };
 
   const currencyProps = {
     currency: 'ZAR',
-    lang: 'ru-RU',
+    lang: props.language,
   };
 
   const fetchWidgetsData = () => {
@@ -37,25 +37,25 @@ const Widgets = (props) => {
 
   useEffect(() => {
     fetchWidgetsData();
-  }, []);
+  }, [props.language]);
 
   return (
     <div className={styles['widgets-container']}>
-      <WidgetTime zone="Africa/Johannesburg" lang="ru-RU" />
+      <WidgetTime zone="Africa/Johannesburg" lang={props.language} />
 
       {props.currencyLoading ? (
         <Loader />
       ) : (
-        <WidgetCurrency currency={currencyProps.currency} lang={currencyProps.lang} />
+        <WidgetCurrency currency={currencyProps.currency} lang={props.language} />
       )}
 
       {props.weatherLoading ? (
         <Loader />
       ) : (
-        <WidgetWeather city={weatherProps.city} lang={weatherProps.lang} />
+        <WidgetWeather city={weatherProps.city} lang={props.language} />
       )}
 
-      <WidgetMap lang ="ru-RU" country="FRA"/>
+      <WidgetMap lang={props.language} country="ZAF" />
     </div>
   );
 };
@@ -63,6 +63,7 @@ const Widgets = (props) => {
 const mapStateToProps = (state) => ({
   weatherLoading: state.loaderReducer.isLoading.weatherLoading,
   currencyLoading: state.loaderReducer.isLoading.currencyLoading,
+  language: state.switchLanguageReducer.language,
 });
 
 const mapDispatchToProps = {

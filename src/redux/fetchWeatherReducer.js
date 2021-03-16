@@ -2,7 +2,7 @@ import { WEATHER_DATA } from './constants';
 
 const initialState = {
   weatherData: {
-    temperature: 43,
+    temperature: '-',
     icon: '-',
     description: '-',
     feelsLike: '-',

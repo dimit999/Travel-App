@@ -38,6 +38,7 @@ function getNoWeather() {
 }
 
 async function fetchWeather(props) {
+  console.log('request for a new weather!');
   const weatherData = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${encodeURI(
       props.city
