@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -17,9 +17,21 @@ import Search from './Header/Search';
 import CountryCard from './Main/CountryCard';
 import Widgets from './Widgets/Widgets';
 
-const Home = ({ isAuth }) => {
+const Home = ({ isAuth, language }) => {
   const [widgetIsActive, setWidgetIsActive] = useState(false);
   const history = useHistory();
+
+  const [widgetsTitle, setWidgetsTitle] = useState('Виджеты');
+
+  useEffect(() => {
+    if (language === 'en-US') {
+      setWidgetsTitle('Widgets');
+    } else if (language === 'fr-FR') {
+      setWidgetsTitle('Widgets');
+    } else {
+      setWidgetsTitle('Виджеты');
+    }
+  }, [language])
 
   const widgetCheckboxHandler = () => {
     setWidgetIsActive(!widgetIsActive);
@@ -53,7 +65,7 @@ const Home = ({ isAuth }) => {
               <Form.Check
                 type="switch"
                 id="custom-switch"
-                label="Виджеты"
+                label={widgetsTitle}
                 onChange={widgetCheckboxHandler}
               />
             </Form>
@@ -71,10 +83,9 @@ const Home = ({ isAuth }) => {
   );
 };
 
-// export default connect(null, null)(Home);
-
 const mapStateToProps = state => ({
   isAuth: state.authReducer.auth,
+  language: state.switchLanguageReducer.language,
 });
 
 export default connect(mapStateToProps, null)(Home);

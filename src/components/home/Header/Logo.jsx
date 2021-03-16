@@ -12,7 +12,7 @@ const Logo = () => {
 
   return (
     <div onClick={clickHandler} className={styles['logo']}>
-      LOGO
+       <img className={styles['logo-img']} src="../../assets/image/travel-logo.jpeg" alt="Travel" />
     </div>
   );
 };
