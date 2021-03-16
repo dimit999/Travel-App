@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 import Authorization from './components/authorization/Authorization';
 import Home from './components/home/Home';
-import CountryCard from './components/home/Main/CountryCard';
+import CountryPage from './components/home/Main/CountryPage/CountryPage';
 import Registration from './components/registration/Registration';
 
 const App = ({ isAuth }) => {
@@ -56,7 +56,7 @@ const App = ({ isAuth }) => {
                   <Home />
                 </Route>
                 <Route push path="/country">
-                  <CountryCard />
+                  <CountryPage />
                 </Route>
               </>
             )

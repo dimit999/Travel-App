@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
@@ -12,7 +11,7 @@ import Logo from './Header/Logo';
 import QuitButton from './Header/QuitButton';
 import UserInfo from './Header/UserInfo';
 import Search from './Header/Search';
-import CountryCard from './Main/CountryCard';
+import CountryCard from './Main/CountryCard/CountryCard';
 import Widgets from './Widgets/Widgets';
 import countriesAtlas from '../../assets/atlases/countriesAtlas';
 

@@ -17,4 +17,11 @@ export default [
     name: 'Japan',
     capital: 'Tokyo',
   },
+  {
+    id: '4',
+    img: '',
+    name: 'Brasil',
+    capital: 'Saratov',
+  },
+
 ];

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from '@/components/home/Main/style.scss';
+import styles from '@/components/home/Main/CountryCard/style.scss';
 
 const CountryCard = ({ onClick, name, capital }) => {
   return (
