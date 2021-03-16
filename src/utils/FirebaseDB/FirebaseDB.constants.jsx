@@ -1,12 +1,11 @@
 const firebaseConfig = {
-  apiKey: 'AIzaSyBaO8AKvnd8941ELp2Vnc3a-29je1UFdMM',
-  authDomain: 'travel-app-f97a6.firebaseapp.com',
-  databaseURL: 'https://travel-app-f97a6-default-rtdb.firebaseio.com',
-  projectId: 'travel-app-f97a6',
-  storageBucket: 'travel-app-f97a6.appspot.com',
-  messagingSenderId: '93599118213',
-  appId: '1:93599118213:web:e7ead346101a0c17fb8aec',
-  measurementId: 'G-4M22ZR2X43',
+  apiKey: "AIzaSyBd4SXlvOuUmlGZEh9kD4ISGTd8KwodJF0",
+  authDomain: "travel-app-bf141.firebaseapp.com",
+  projectId: "travel-app-bf141",
+  storageBucket: "travel-app-bf141.appspot.com",
+  messagingSenderId: "631191304082",
+  appId: "1:631191304082:web:9dcdd73565d05b464fb34b",
+  measurementId: "G-P7C7D9S04Q"
 };
 
 export default firebaseConfig;

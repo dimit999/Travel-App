@@ -94,7 +94,13 @@
   display: flex;
 }
 
-
 .userName {
   margin-left: 8px;
+  width: 40px;
+}
+
+.firstName, .secondName {
+  width: auto;
+  display: inline-block;
+  white-space: nowrap;
 }
