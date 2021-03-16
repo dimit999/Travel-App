@@ -46,37 +46,4 @@ const GEO_DATA = {
   },
 };
 
-const labels = {
-  'en-US': {
-    ZAF: { name: 'South Africa', capital: 'Pretoria' },
-    USA: { name: 'United States', capital: 'Washington' },
-    CHN: { name: 'China', capital: 'Beijing' },
-    AUS: { name: 'Australia', capital: 'Canberra' },
-    BRA: { name: 'Brazil', capital: 'Brasilia' },
-    FRA: { name: 'France', capital: 'Paris' },
-    GBR: { name: 'United Kingdom', capital: 'London' },
-    IND: { name: 'India', capital: 'New Delhi' },
-  },
-  'fr-FR': {
-    ZAF: { name: 'Afrique du Sud', capital: 'Pretoria' },
-    USA: { name: 'États-Unis', capital: 'Washington' },
-    CHN: { name: 'Chine', capital: 'Pékin' },
-    AUS: { name: 'Australie', capital: 'Canberra' },
-    BRA: { name: 'Brésil', capital: 'Brasilia' },
-    FRA: { name: 'France', capital: 'Paris' },
-    GBR: { name: 'Royaume-Uni', capital: 'Londres' },
-    IND: { name: 'Inde', capital: 'New Delhi' },
-  },
-  'ru-RU': {
-    ZAF: { name: 'ЮАР', capital: 'Претория' },
-    USA: { name: 'США', capital: 'Вашингтон' },
-    CHN: { name: 'Китай', capital: 'Пекин' },
-    AUS: { name: 'Австралия', capital: 'Канберра' },
-    BRA: { name: 'Бразилия', capital: 'Бразилиа' },
-    FRA: { name: 'Франция', capital: 'Париж' },
-    GBR: { name: 'Великобритания', capital: 'Лондон' },
-    IND: { name: 'Индия', capital: 'Нью-Дели' },
-  },
-};
-
-export { BORDER_COLOR, BORDER_WIDTH, CAPTIAL_COLOR, CAPITAL_RADIUS, GEO_DATA, labels };
+export { BORDER_COLOR, BORDER_WIDTH, CAPTIAL_COLOR, CAPITAL_RADIUS, GEO_DATA };

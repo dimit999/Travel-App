@@ -13,17 +13,17 @@ import UserInfo from './Header/UserInfo';
 import Search from './Header/Search';
 import CountryCard from './Main/CountryCard/CountryCard';
 import Widgets from './Widgets/Widgets';
-import countriesAtlas from '../../assets/atlases/countriesAtlas';
+import countriesAtlas, { labels } from '../../assets/atlases/countriesAtlas';
 
-const Home = () => {
+const Home = ({ language }) => {
   const [widgetIsActive, setWidgetIsActive] = useState(false);
   const [countries, setCountries] = useState(countriesAtlas);
   const [searchValue, setSearchValue] = useState('');
   const history = useHistory();
 
   useEffect(() => {
-    setCountries(countriesAtlas)
-  }, [])
+    setCountries(countriesAtlas);
+  }, []);
 
   const searchHandler = (e) => {
     setSearchValue(e.target.value);
@@ -38,14 +38,18 @@ const Home = () => {
       <div className={styles['home-page-wrapper']}>
         <header className={styles['header']}>
           <Logo />
-          <Search onChange={searchHandler} searchValue={searchValue}/>
+          <Search onChange={searchHandler} searchValue={searchValue} />
           <LanguageSwitcher />
           <UserInfo />
           <QuitButton />
         </header>
 
         <main className={styles['main']}>
-          <div className={widgetIsActive? styles['widgets-wrapper_active'] : styles['widgets-wrapper']}>
+          <div
+            className={
+              widgetIsActive ? styles['widgets-wrapper_active'] : styles['widgets-wrapper']
+            }
+          >
             <Widgets />
           </div>
           <div>
@@ -59,24 +63,32 @@ const Home = () => {
             </Form>
           </div>
           <div className={styles['home-content-wrapper']}>
-            {
-              countries.map((country) => {
-                if (searchValue === '') {
-                  return <CountryCard
+            {countries.map((country) => {
+              if (searchValue === '') {
+                return (
+                  <CountryCard
+                    key={country.id}
                     onClick={() => history.push('/country')}
-                    name={country.name}
-                    capital={country.capital}
+                    countryCode={country.code}
+                    language={language}
                   />
-                }
-                if (country.name.includes(searchValue) || country.capital.includes(searchValue)) {
-                  return <CountryCard
+                );
+              }
+
+              if (
+                labels[language][country.code].name.includes(searchValue) ||
+                labels[language][country.code].capital.includes(searchValue)
+              ) {
+                return (
+                  <CountryCard
+                    key={country.id}
                     onClick={() => history.push('/country')}
-                    name={country.name}
-                    capital={country.capital}
+                    countryCode={country.code}
+                    language={language}
                   />
-                }
-              })
-            }
+                );
+              }
+            })}
           </div>
         </main>
 
@@ -88,4 +100,8 @@ const Home = () => {
   );
 };
 
-export default connect(null, null)(Home);
+const mapStateToProps = (state) => ({
+  language: state.switchLanguageReducer.language,
+});
+
+export default connect(mapStateToProps, null)(Home);
