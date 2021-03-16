@@ -1,4 +1,3 @@
-// import './widgetTime.css';
 import React, { useEffect, useState } from 'react';
 
 import Cadencer from '@/services/cadencer';
@@ -11,7 +10,6 @@ function WidgetTime(props) {
   const [time, setNewTime] = useState({ time: '', date: '', day: '' });
 
   useEffect(() => {
-    // console.log('Cadencer Init!');
     function getTime() {
       const date = new Date();
 
@@ -39,11 +37,10 @@ function WidgetTime(props) {
     cadencer.start();
 
     return () => {
-      // console.log('Cadencer Unmount!');
       cadencer.setCallback(null);
       cadencer.stop();
     };
-  }, []);
+  }, [props]);
 
   return (
     <div className={styles['widget-time']}>

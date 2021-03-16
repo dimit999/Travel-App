@@ -17,19 +17,31 @@ import WidgetTime from './WidgetTime/WidgetTime';
 import WidgetWeather from './WidgetWeather/WidgetWeather';
 
 const Widgets = (props) => {
-  const weatherProps = {
+  const weatherPropsRU = {
     city: 'Саратов',
-    lang: 'ru-RU',
+    language: 'ru-RU',
+  };
+  const weatherPropsEN = {
+    city: 'Саратов',
+    language: 'en-US',
+  };
+  const weatherPropsFR = {
+    city: 'Саратов',
+    language: 'fr-FR',
   };
 
   const currencyProps = {
     currency: 'ZAR',
-    lang: 'ru-RU',
+    language: props.language,
   };
 
   const fetchWidgetsData = () => {
     props.weatherRequestAction();
-    props.dispatchWeatherPropsToSaga(weatherProps);
+    props.dispatchWeatherPropsToSaga(weatherPropsRU);
+    props.weatherRequestAction();
+    props.dispatchWeatherPropsToSaga(weatherPropsEN);
+    props.weatherRequestAction();
+    props.dispatchWeatherPropsToSaga(weatherPropsFR);
 
     props.currencyRequestAction();
     props.dispatchCurrencyPropsToSaga(currencyProps);
@@ -41,21 +53,21 @@ const Widgets = (props) => {
 
   return (
     <div className={styles['widgets-container']}>
-      <WidgetTime zone="Africa/Johannesburg" lang="ru-RU" />
+      <WidgetTime zone="Africa/Johannesburg" lang={props.language} />
 
       {props.currencyLoading ? (
         <Loader />
       ) : (
-        <WidgetCurrency currency={currencyProps.currency} lang={currencyProps.lang} />
+        <WidgetCurrency currency={currencyProps.currency} lang={props.language} />
       )}
 
       {props.weatherLoading ? (
         <Loader />
       ) : (
-        <WidgetWeather city={weatherProps.city} lang={weatherProps.lang} />
+        <WidgetWeather city={weatherPropsRU.city} lang={props.language} />
       )}
 
-      <WidgetMap lang ="ru-RU" country="FRA"/>
+      <WidgetMap lang={props.language} country="ZAF" />
     </div>
   );
 };
@@ -63,6 +75,7 @@ const Widgets = (props) => {
 const mapStateToProps = (state) => ({
   weatherLoading: state.loaderReducer.isLoading.weatherLoading,
   currencyLoading: state.loaderReducer.isLoading.currencyLoading,
+  language: state.switchLanguageReducer.language,
 });
 
 const mapDispatchToProps = {

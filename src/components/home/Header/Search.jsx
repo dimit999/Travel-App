@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Button, FormControl, InputGroup } from 'react-bootstrap';
 
 import styles from '@/components/home/style.scss';
 
-const Search = ({ language }) => {
-  const clickHandler = () => {};
-
+const Search = ({onChange, searchValue, language}) => {
   const [searchTitle, setSearchTitle] = useState('Поиск');
-
+  const clickHandler = () => {};
+  
   useEffect(() => {
     if (language === 'en-US') {
       setSearchTitle('Search');
@@ -18,7 +18,23 @@ const Search = ({ language }) => {
     }
   }, [language])
 
-  return <div className={styles['search']}>{searchTitle}</div>;
+  return (
+    <div className={styles['search']}>
+      <InputGroup className="mb-3">
+        <FormControl
+          placeholder={`${searchTitle}...`}
+          aria-label={searchTitle}
+          aria-describedby="basic-addon2"
+          autoFocus={true}
+          onChange={onChange}
+          value={searchValue}
+        />
+        <InputGroup.Append>
+          <Button variant="outline-secondary">{searchTitle}</Button>
+        </InputGroup.Append>
+      </InputGroup>
+    </div>
+  );
 };
 
 const mapStateToProps = (state) => ({

@@ -14,7 +14,7 @@ const LanguageSwitcher = ({switchLanguageAction, language}) => {
         size="sm"
         as="select"
         onChange={(e) => {
-          switchLanguageAction(e.target.value)
+          switchLanguageAction(e.target.value);
         }}
       >
         <option value='ru-RU'>RU</option>
