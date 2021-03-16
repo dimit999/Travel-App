@@ -33,7 +33,7 @@
   height: 69px;
 }
 
-.quit-button {
+.quit-button, .enter-icon {
   background: none;
   font-family: 'SF Pro Text';
   font-style: normal;
@@ -44,8 +44,10 @@
   color: #1157a7;
 }
 
-.quit-icon {
+.enter-icon {
+  margin-left: 12px;
 }
+
 
 .main {
   display: flex;
@@ -94,7 +96,7 @@
   display: flex;
 }
 
-.userName {
+.userName, .userNameGuest {
   margin-left: 8px;
   width: 40px;
 }
@@ -103,4 +105,18 @@
   width: auto;
   display: inline-block;
   white-space: nowrap;
+}
+
+.guestName {
+  margin-top: 9px;
+}
+
+.logo {
+  width: 75px;
+  height: 75px;
+}
+
+.logo img {
+  width: 100%;
+  height: auto;
 }

@@ -17,7 +17,7 @@ const QuitButton = ({ quitAction }) => {
       }}
     >
       Выйти
-      <img className={styles['quit-icon']} src="../../assets/image/logout_icon.png" alt="logaut" />
+      <img className={styles['quit-icon']} src="../../assets/image/logout_icon.png" alt="logout" />
     </button>
   );
 };

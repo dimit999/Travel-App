@@ -9,18 +9,31 @@ import Footer from './Footer/Footer';
 import LanguageSwitcher from './Header/LanguageSwitcher';
 import Logo from './Header/Logo';
 import QuitButton from './Header/QuitButton';
-import UserInfo from './Header/UserInfo';
+import EnterButton from './Header/EnterButton';
+import LoggedUserInfo from './Header/LoggedUserInfo';
+import GuestUserInfo from './Header/GuestUserInfo';
 import Search from './Header/Search';
 import CountryCard from './Main/CountryCard/CountryCard';
 import Widgets from './Widgets/Widgets';
 import countriesAtlas from '../../assets/atlases/countriesAtlas';
 
-const Home = () => {
+const Home = ({ isAuth, language }) => {
   const [widgetIsActive, setWidgetIsActive] = useState(false);
   const [countries, setCountries] = useState(countriesAtlas);
   const [searchValue, setSearchValue] = useState('');
+  const [widgetsTitle, setWidgetsTitle] = useState('Виджеты');
   const history = useHistory();
 
+  useEffect(() => {
+    if (language === 'en-US') {
+      setWidgetsTitle('Widgets');
+    } else if (language === 'fr-FR') {
+      setWidgetsTitle('Widgets');
+    } else {
+      setWidgetsTitle('Виджеты');
+    }
+  }, [language])
+  
   useEffect(() => {
     setCountries(countriesAtlas)
   }, [])
@@ -40,8 +53,16 @@ const Home = () => {
           <Logo />
           <Search onChange={searchHandler} searchValue={searchValue}/>
           <LanguageSwitcher />
-          <UserInfo />
-          <QuitButton />
+          {
+            isAuth
+              ? <LoggedUserInfo />
+              : <GuestUserInfo />
+          }
+          {
+            isAuth
+              ? <QuitButton />
+              : <EnterButton />
+          }
         </header>
 
         <main className={styles['main']}>
@@ -53,7 +74,7 @@ const Home = () => {
               <Form.Check
                 type="switch"
                 id="custom-switch"
-                label="Виджеты"
+                label={widgetsTitle}
                 onChange={widgetCheckboxHandler}
               />
             </Form>
@@ -88,4 +109,9 @@ const Home = () => {
   );
 };
 
-export default connect(null, null)(Home);
+const mapStateToProps = state => ({
+  isAuth: state.authReducer.auth,
+  language: state.switchLanguageReducer.language,
+});
+
+export default connect(mapStateToProps, null)(Home);

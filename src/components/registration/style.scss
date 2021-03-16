@@ -3,7 +3,18 @@
 .authorization-wrapper {
   display: flex;
   align-items: center;
-  justify-content: center;
+  @media (min-width: 1200px) {
+    justify-content: center;
+  }
+  @media (min-width: 800px - 1px) and (max-width: 1200px - 1px) {
+    justify-content: center;
+  }
+  @media (min-width: 768px - 1px) and (max-width: 800px - 1px) {
+    justify-content: center;
+  }
+  @media (min-width: 375px - 1px) and (max-width: 768px - 1px) {
+    justify-content: center;
+  }
   background: rgba(255, 255, 255, 0.6);
   background-image: url('../../assets/image/authorization.png');
   backdrop-filter: blur(20px);
@@ -17,8 +28,26 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 400px;
-  height: 600px;
+  @media (min-width: 1200px) {
+    width: 400px;
+    height: 600px;
+  }
+  @media (min-width: 800px - 1px) and (max-width: 1200px - 1px) {
+    width: 400px;
+    height: 600px;
+  }
+  @media (min-width: 768px - 1px) and (max-width: 800px - 1px) {
+    width: 400px;
+    height: 600px;
+  }
+  @media (min-width: 375px - 1px) and (max-width: 768px - 1px) {
+    width: 350px;
+    height: 600px;
+  }
+  @media (min-width: 320px - 1px) and (max-width: 375px - 1px) {
+    width: 350px;
+    height: 500px;
+  }
   background: #ffffff;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
   border-radius: 20px;
@@ -45,6 +74,7 @@
 
 .back-to-login-icon {
   transform: rotate(0.5turn);
+  margin-right: 5px;
 }
 
 .form-title {
@@ -68,7 +98,21 @@
 .form__label {
   display: flex;
   align-items: center;
-  width: 345px;
+  @media (min-width: 1200px) {
+    width: 345px;
+  }
+  @media (min-width: 800px - 1px) and (max-width: 1200px - 1px) {
+    width: 345px;
+  }
+  @media (min-width: 768px - 1px) and (max-width: 800px - 1px) {
+    width: 345px;
+  }
+  @media (min-width: 375px - 1px) and (max-width: 768px - 1px) {
+    width: 280px;
+  }
+  @media (min-width: 320px - 1px) and (max-width: 375px - 1px) {
+    width: 280px;
+  }
   font-weight: 300;
   font-size: 16px;
   line-height: 19px;
@@ -115,4 +159,26 @@
 
 .errorServ {
   color: #dc3545;
+}
+
+.language-switcher {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  @media (min-width: 1200px) {
+    margin-bottom: 100px;
+  }
+  @media (min-width: 800px - 1px) and (max-width: 1200px - 1px) {
+    margin-bottom: 130px;
+  }
+  @media (min-width: 768px - 1px) and (max-width: 800px - 1px) {
+    margin-bottom: 230px;
+  }
+  @media (min-width: 375px - 1px) and (max-width: 768px - 1px) {
+    margin-bottom: 120px;
+
+  }
+  @media (min-width: 320px - 1px) and (max-width: 375px - 1px) {
+    margin-bottom: 120px;
+  }
 }
