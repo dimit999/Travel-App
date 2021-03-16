@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { FirebaseDB } from '../../../utils/FirebaseDB/FirebaseDB';
 
@@ -15,7 +15,9 @@ const UserInfo = () => {
     });
   };
 
-  getUserInfo()
+  useEffect(() => {
+    getUserInfo()
+  }, [])
 
   return (
     <div className={styles['userInfo']}>
@@ -24,8 +26,8 @@ const UserInfo = () => {
           alt={`User image not found`}
         />
       <div className={styles['userName']}>
-        <div>{userInfo.firstName}</div>
-        <div>{userInfo.secondName}</div>
+        <div className={styles['firstName']}>{userInfo.firstName}</div>
+        <div className={styles['secondName']}>{userInfo.secondName}</div>
       </div>
     </div>
   );
