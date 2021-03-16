@@ -1,27 +1,67 @@
 export default [
   {
     id: '1',
-    img: '',
-    name: 'Russia',
-    capital: 'Moscow',
+    code: 'AUS',
   },
   {
     id: '2',
-    img: '',
-    name: 'France',
-    capital: 'Paris',
+    code: 'BRA',
   },
   {
     id: '3',
-    img: '',
-    name: 'Japan',
-    capital: 'Tokyo',
+    code: 'CHN',
   },
   {
     id: '4',
-    img: '',
-    name: 'Brasil',
-    capital: 'Saratov',
+    code: 'FRA',
   },
-
+  {
+    id: '5',
+    code: 'GBR',
+  },
+  {
+    id: '6',
+    code: 'IND',
+  },
+  {
+    id: '7',
+    code: 'USA',
+  },
+  {
+    id: '8',
+    code: 'ZAF',
+  },
 ];
+
+export const labels = {
+  'en-US': {
+    ZAF: { name: 'South Africa', capital: 'Pretoria' },
+    USA: { name: 'United States', capital: 'Washington' },
+    CHN: { name: 'China', capital: 'Beijing' },
+    AUS: { name: 'Australia', capital: 'Canberra' },
+    BRA: { name: 'Brazil', capital: 'Brasilia' },
+    FRA: { name: 'France', capital: 'Paris' },
+    GBR: { name: 'United Kingdom', capital: 'London' },
+    IND: { name: 'India', capital: 'New Delhi' },
+  },
+  'fr-FR': {
+    ZAF: { name: 'Afrique du Sud', capital: 'Pretoria' },
+    USA: { name: 'États-Unis', capital: 'Washington' },
+    CHN: { name: 'Chine', capital: 'Pékin' },
+    AUS: { name: 'Australie', capital: 'Canberra' },
+    BRA: { name: 'Brésil', capital: 'Brasilia' },
+    FRA: { name: 'France', capital: 'Paris' },
+    GBR: { name: 'Royaume-Uni', capital: 'Londres' },
+    IND: { name: 'Inde', capital: 'New Delhi' },
+  },
+  'ru-RU': {
+    ZAF: { name: 'ЮАР', capital: 'Претория' },
+    USA: { name: 'США', capital: 'Вашингтон' },
+    CHN: { name: 'Китай', capital: 'Пекин' },
+    AUS: { name: 'Австралия', capital: 'Канберра' },
+    BRA: { name: 'Бразилия', capital: 'Бразилиа' },
+    FRA: { name: 'Франция', capital: 'Париж' },
+    GBR: { name: 'Великобритания', capital: 'Лондон' },
+    IND: { name: 'Индия', capital: 'Нью-Дели' },
+  },
+};

@@ -11,14 +11,8 @@ import VectorSource from 'ol/source/Vector';
 import { Circle, Fill, Stroke, Style } from 'ol/style';
 import Feature from 'ol/Feature';
 import Point from 'ol/geom/Point';
-import {
-  BORDER_COLOR,
-  BORDER_WIDTH,
-  CAPTIAL_COLOR,
-  CAPITAL_RADIUS,
-  GEO_DATA,
-  labels,
-} from './constants';
+import { BORDER_COLOR, BORDER_WIDTH, CAPTIAL_COLOR, CAPITAL_RADIUS, GEO_DATA } from './constants';
+import { labels } from '../../../../assets/atlases/countriesAtlas';
 
 function WidgetMap(props) {
   useEffect(() => {

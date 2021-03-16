@@ -15,7 +15,7 @@ import GuestUserInfo from './Header/GuestUserInfo';
 import Search from './Header/Search';
 import CountryCard from './Main/CountryCard/CountryCard';
 import Widgets from './Widgets/Widgets';
-import countriesAtlas from '../../assets/atlases/countriesAtlas';
+import countriesAtlas, { labels } from '../../assets/atlases/countriesAtlas';
 
 const Home = ({ isAuth, language }) => {
   const [widgetIsActive, setWidgetIsActive] = useState(false);
@@ -51,7 +51,7 @@ const Home = ({ isAuth, language }) => {
       <div className={styles['home-page-wrapper']}>
         <header className={styles['header']}>
           <Logo />
-          <Search onChange={searchHandler} searchValue={searchValue}/>
+          <Search onChange={searchHandler} searchValue={searchValue} />
           <LanguageSwitcher />
           {
             isAuth
@@ -66,7 +66,11 @@ const Home = ({ isAuth, language }) => {
         </header>
 
         <main className={styles['main']}>
-          <div className={widgetIsActive? styles['widgets-wrapper_active'] : styles['widgets-wrapper']}>
+          <div
+            className={
+              widgetIsActive ? styles['widgets-wrapper_active'] : styles['widgets-wrapper']
+            }
+          >
             <Widgets />
           </div>
           <div>
@@ -80,24 +84,32 @@ const Home = ({ isAuth, language }) => {
             </Form>
           </div>
           <div className={styles['home-content-wrapper']}>
-            {
-              countries.map((country) => {
-                if (searchValue === '') {
-                  return <CountryCard
+            {countries.map((country) => {
+              if (searchValue === '') {
+                return (
+                  <CountryCard
+                    key={country.id}
                     onClick={() => history.push('/country')}
-                    name={country.name}
-                    capital={country.capital}
+                    countryCode={country.code}
+                    language={language}
                   />
-                }
-                if (country.name.includes(searchValue) || country.capital.includes(searchValue)) {
-                  return <CountryCard
+                );
+              }
+
+              if (
+                labels[language][country.code].name.includes(searchValue) ||
+                labels[language][country.code].capital.includes(searchValue)
+              ) {
+                return (
+                  <CountryCard
+                    key={country.id}
                     onClick={() => history.push('/country')}
-                    name={country.name}
-                    capital={country.capital}
+                    countryCode={country.code}
+                    language={language}
                   />
-                }
-              })
-            }
+                );
+              }
+            })}
           </div>
         </main>
 
