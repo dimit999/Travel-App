@@ -28,6 +28,7 @@ function* weatherRequestWorker() {
 
 function getNoWeather() {
   return {
+    language: '-',
     temperature: '-',
     icon: '-',
     description: '-',
@@ -42,7 +43,7 @@ async function fetchWeather(props) {
   const weatherData = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${encodeURI(
       props.city
-    )}&exclude=hourly,minutely&units=metric&appid=${OWM_API}&lang=${props.lang.substring(0, 2)}`
+    )}&exclude=hourly,minutely&units=metric&appid=${OWM_API}&lang=${props.language.substring(0, 2)}`
   )
     .then((response) => {
       return response.json();
@@ -50,6 +51,7 @@ async function fetchWeather(props) {
     .then((data) => {
       const owfIcon = `owf-${data.weather[0].id}-${data.weather[0].icon.substr(-1, 1)}`;
       return {
+        language: props.language,
         temperature: Math.round(data.main.temp),
         icon: owfIcon,
         description: data.weather[0].description,

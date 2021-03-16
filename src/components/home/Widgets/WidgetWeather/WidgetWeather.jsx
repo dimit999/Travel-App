@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { labels } from './constants';
 
@@ -7,7 +7,20 @@ import weatherStyles from './owfont-regular.css';
 import styles from './widgetWeather.scss';
 
 function WidgetWeather(props) {
-  const { weather } = props;
+  const [weather, setWeather] = useState(props.weatherRU);
+
+  useEffect(() => {
+    console.log(weather)
+    if (props.lang === 'ru-RU') {
+      setWeather(props.weatherRU)
+    }
+    if (props.lang === 'en-US') {
+      setWeather(props.weatherEN)
+    }
+    if (props.lang === 'fr-FR') {
+      setWeather(props.weatherFR)
+    }
+  }, [props.lang])
 
   return (
     <div className={styles['widget-weather']}>
@@ -31,7 +44,9 @@ function WidgetWeather(props) {
 }
 
 const mapStateToProps = (state) => ({
-  weather: state.fetchWeatherReducer.weatherData,
+  weatherRU: state.fetchWeatherReducer.weatherDataRU,
+  weatherEN: state.fetchWeatherReducer.weatherDataEN,
+  weatherFR: state.fetchWeatherReducer.weatherDataFR,
 });
 
 export default connect(mapStateToProps, null)(WidgetWeather);
