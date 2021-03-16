@@ -1,7 +1,7 @@
 import { SWITCH_LANGUAGE } from './constants';
 
 const initialState = {
-  language: 'RU'
+  language: 'ru-RU'
 };
 
 const switchLanguageReducer = (state = initialState, action) => {

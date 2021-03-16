@@ -11,6 +11,7 @@ import {
   RATE,
   CURRENCY_REQUEST,
   SWITCH_LANGUAGE,
+  GUEST_ENTER,
 } from './constants';
 
 const authAction = () => ({
@@ -19,6 +20,10 @@ const authAction = () => ({
 
 const quitAction = () => ({
   type: QUIT,
+});
+
+const guestAction = () => ({
+  type: GUEST_ENTER,
 });
 
 const weatherRequestAction = () => ({
@@ -81,4 +86,5 @@ export {
   hideLoaderAction,
   registrationSuccess,
   switchLanguageAction,
+  guestAction,
 };

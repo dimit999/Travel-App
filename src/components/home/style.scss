@@ -33,7 +33,7 @@
   height: 69px;
 }
 
-.quit-button {
+.quit-button, .enter-icon {
   background: none;
   font-family: 'SF Pro Text';
   font-style: normal;
@@ -44,8 +44,10 @@
   color: #1157a7;
 }
 
-.quit-icon {
+.enter-icon {
+  margin-left: 12px;
 }
+
 
 .main {
   display: flex;

@@ -5,7 +5,7 @@ import { useHistory } from 'react-router';
 import styles from '@/components/home/style.scss';
 import { quitAction } from '@/redux/actions';
 
-const QuitButton = ({ quitAction }) => {
+const EnterButton = ({ quitAction }) => {
   const history = useHistory();
   return (
     <button
@@ -16,8 +16,8 @@ const QuitButton = ({ quitAction }) => {
         quitAction();
       }}
     >
-      Выйти
-      <img className={styles['quit-icon']} src="../../assets/image/logout_icon.png" alt="logout" />
+      Войти
+      <img className={styles['quit-icon']} className={styles['enter-icon']} src="../../assets/image/enter.svg" alt="Enter" />
     </button>
   );
 };
@@ -26,4 +26,4 @@ const mapDispatchToProps = {
   quitAction,
 };
 
-export default connect(null, mapDispatchToProps)(QuitButton);
+export default connect(null, mapDispatchToProps)(EnterButton);

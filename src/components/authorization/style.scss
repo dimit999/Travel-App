@@ -2,7 +2,7 @@
 
 .authorization-wrapper {
   display: flex;
-  align-items: center;
+  // align-items: center;
   justify-content: center;
   background: rgba(255, 255, 255, 0.6);
   background-image: url('../../assets/image/authorization.png');
@@ -17,8 +17,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 410px;
-  height: 380px;
+  width: 400px;
+  height: 540px;
   background: #ffffff;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
   border-radius: 20px;
@@ -66,13 +66,12 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+  flex-wrap: wrap;
   width: 345px;
   margin-top: 5px;
 }
 
-.submit-button {
-  width: 116px;
-  height: 34px;
+.submit-button, .guest-submit-button {
   background: linear-gradient(104.34deg, #3c4cad -15.34%, #00c3ff 145.95%);
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
@@ -82,6 +81,17 @@
   color: #ffffff;
   border: none;
   box-sizing: border-box;
+}
+
+.submit-button {
+  width: 116px;
+  height: 34px;
+  margin-bottom: 30px;
+}
+
+.guest-submit-button {
+  width: 155px;
+  height: 34px;
 }
 
 .submit-button:hover {
@@ -95,8 +105,29 @@
   border-radius: 4px;
 }
 
-
 .errorServ {
   margin-top: 10px;
   color: #dc3545;
+}
+
+.language-switcher {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  @media (min-width: 1200px) {
+    margin-bottom: 100px;
+  }
+  @media (min-width: 800px - 1px) and (max-width: 1200px - 1px) {
+    margin-bottom: 130px;
+  }
+  @media (min-width: 768px - 1px) and (max-width: 800px - 1px) {
+    margin-bottom: 230px;
+  }
+  @media (min-width: 375px - 1px) and (max-width: 768px - 1px) {
+    margin-bottom: 120px;
+
+  }
+  @media (min-width: 320px - 1px) and (max-width: 375px - 1px) {
+    margin-bottom: 120px;
+  }
 }

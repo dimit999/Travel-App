@@ -6,20 +6,20 @@ import styles from '@/components/home/style.scss';
 
 import { switchLanguageAction } from '../../../redux/actions';
 
-const LanguageSwitcher = ({switchLanguageAction}) => {
+const LanguageSwitcher = ({switchLanguageAction, language}) => {
   return (
     <Form.Group>
       <Form.Control
-        defaultValue="RU"
+        defaultValue={language}
         size="sm"
         as="select"
         onChange={(e) => {
           switchLanguageAction(e.target.value)
         }}
       >
-        <option>RU</option>
-        <option>EN</option>
-        <option>FR</option>
+        <option value='ru-RU'>RU</option>
+        <option value='en-US'>EN</option>
+        <option value='fr-FR'>FR</option>
       </Form.Control>
     </Form.Group>
   );
@@ -29,4 +29,8 @@ const mapDispatchToProps = {
   switchLanguageAction,
 };
 
-export default connect(null, mapDispatchToProps)(LanguageSwitcher);
+const mapStateToProps = state => ({
+  language: state.switchLanguageReducer.language,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LanguageSwitcher);

@@ -45,6 +45,7 @@
 
 .back-to-login-icon {
   transform: rotate(0.5turn);
+  margin-right: 5px;
 }
 
 .form-title {
@@ -115,4 +116,26 @@
 
 .errorServ {
   color: #dc3545;
+}
+
+.language-switcher {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  @media (min-width: 1200px) {
+    margin-bottom: 100px;
+  }
+  @media (min-width: 800px - 1px) and (max-width: 1200px - 1px) {
+    margin-bottom: 130px;
+  }
+  @media (min-width: 768px - 1px) and (max-width: 800px - 1px) {
+    margin-bottom: 230px;
+  }
+  @media (min-width: 375px - 1px) and (max-width: 768px - 1px) {
+    margin-bottom: 120px;
+
+  }
+  @media (min-width: 320px - 1px) and (max-width: 375px - 1px) {
+    margin-bottom: 120px;
+  }
 }

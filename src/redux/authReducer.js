@@ -2,7 +2,6 @@ import { LOGIN, LOGIN_FALSE, LOGIN_TRUE, QUIT } from './constants';
 import { auth } from '../utils/FirebaseDB/FirebaseDB';
 
 function localStorageAuth() {
-  // debugger
   switch (localStorage.getItem('isAuth')) {
     case LOGIN_TRUE:
       return true;
@@ -20,7 +19,6 @@ const initialState = {
 };
 
 const authReducer = (state = initialState, action) => {
-  // debugger
   switch (action.type) {
     case LOGIN:
       return { ...state, auth: true };

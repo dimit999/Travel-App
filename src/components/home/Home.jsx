@@ -10,6 +10,7 @@ import Footer from './Footer/Footer';
 import LanguageSwitcher from './Header/LanguageSwitcher';
 import Logo from './Header/Logo';
 import QuitButton from './Header/QuitButton';
+import EnterButton from './Header/EnterButton';
 import LoggedUserInfo from './Header/LoggedUserInfo';
 import GuestUserInfo from './Header/GuestUserInfo';
 import Search from './Header/Search';
@@ -36,8 +37,11 @@ const Home = ({ isAuth }) => {
               ? <LoggedUserInfo />
               : <GuestUserInfo />
           }
-          {/* <LoggedUserInfo /> */}
-          <QuitButton />
+          {
+            isAuth
+              ? <QuitButton />
+              : <EnterButton />
+          }
         </header>
 
         <main className={styles['main']}>
