@@ -1,28 +1,44 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import { Button, FormControl, InputGroup } from 'react-bootstrap';
 
 import styles from '@/components/home/style.scss';
 
-const Search = ({onChange, searchValue}) => {
+const Search = ({onChange, searchValue, language}) => {
+  const [searchTitle, setSearchTitle] = useState('Поиск');
   const clickHandler = () => {};
+  
+  useEffect(() => {
+    if (language === 'en-US') {
+      setSearchTitle('Search');
+    } else if (language === 'fr-FR') {
+      setSearchTitle('Chercher');
+    } else {
+      setSearchTitle('Поиск');
+    }
+  }, [language])
 
   return (
     <div className={styles['search']}>
       <InputGroup className="mb-3">
         <FormControl
-          placeholder="Search..."
-          aria-label="Search"
+          placeholder={`${searchTitle}...`}
+          aria-label={searchTitle}
           aria-describedby="basic-addon2"
           autoFocus={true}
           onChange={onChange}
           value={searchValue}
         />
         <InputGroup.Append>
-          <Button variant="outline-secondary">Search</Button>
+          <Button variant="outline-secondary">{searchTitle}</Button>
         </InputGroup.Append>
       </InputGroup>
     </div>
   );
 };
 
-export default Search;
+const mapStateToProps = (state) => ({
+  language: state.switchLanguageReducer.language,
+});
+
+export default connect(mapStateToProps, null)(Search);
