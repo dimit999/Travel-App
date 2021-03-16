@@ -17,19 +17,31 @@ import WidgetTime from './WidgetTime/WidgetTime';
 import WidgetWeather from './WidgetWeather/WidgetWeather';
 
 const Widgets = (props) => {
-  const weatherProps = {
+  const weatherPropsRU = {
     city: 'Саратов',
-    lang: props.language,
+    language: 'ru-RU',
+  };
+  const weatherPropsEN = {
+    city: 'Саратов',
+    language: 'en-US',
+  };
+  const weatherPropsFR = {
+    city: 'Саратов',
+    language: 'fr-FR',
   };
 
   const currencyProps = {
     currency: 'ZAR',
-    lang: props.language,
+    language: props.language,
   };
 
   const fetchWidgetsData = () => {
     props.weatherRequestAction();
-    props.dispatchWeatherPropsToSaga(weatherProps);
+    props.dispatchWeatherPropsToSaga(weatherPropsRU);
+    props.weatherRequestAction();
+    props.dispatchWeatherPropsToSaga(weatherPropsEN);
+    props.weatherRequestAction();
+    props.dispatchWeatherPropsToSaga(weatherPropsFR);
 
     props.currencyRequestAction();
     props.dispatchCurrencyPropsToSaga(currencyProps);
@@ -37,7 +49,7 @@ const Widgets = (props) => {
 
   useEffect(() => {
     fetchWidgetsData();
-  }, [props.language]);
+  }, []);
 
   return (
     <div className={styles['widgets-container']}>
@@ -52,7 +64,7 @@ const Widgets = (props) => {
       {props.weatherLoading ? (
         <Loader />
       ) : (
-        <WidgetWeather city={weatherProps.city} lang={props.language} />
+        <WidgetWeather city={weatherPropsRU.city} lang={props.language} />
       )}
 
       <WidgetMap lang={props.language} country="ZAF" />
