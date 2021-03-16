@@ -1,4 +1,3 @@
-// import './widgetTime.css';
 import React, { useEffect, useState } from 'react';
 
 import Cadencer from '@/services/cadencer';
@@ -10,36 +9,35 @@ const cadencer = new Cadencer();
 function WidgetTime(props) {
   const [time, setNewTime] = useState({ time: '', date: '', day: '' });
 
+  function getTime() {
+    const date = new Date();
+
+    const timeStr = date.toLocaleString(props.lang, {
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric',
+      timeZone: props.zone,
+    });
+
+    const dateStr = date.toLocaleString(props.lang, {
+      day: 'numeric',
+      month: 'long',
+      timeZone: props.zone,
+    });
+
+    const dayStr = date.toLocaleString(props.lang, {
+      weekday: 'long',
+      timeZone: props.zone,
+    });
+    setNewTime({ time: timeStr, date: dateStr, day: dayStr });
+  }
+
+  cadencer.setCallback(getTime);
+
   useEffect(() => {
-    // console.log('Cadencer Init!');
-    function getTime() {
-      const date = new Date();
-
-      const timeStr = date.toLocaleString(props.lang, {
-        hour: 'numeric',
-        minute: 'numeric',
-        second: 'numeric',
-        timeZone: props.zone,
-      });
-
-      const dateStr = date.toLocaleString(props.lang, {
-        day: 'numeric',
-        month: 'long',
-        timeZone: props.zone,
-      });
-
-      const dayStr = date.toLocaleString(props.lang, {
-        weekday: 'long',
-        timeZone: props.zone,
-      });
-      setNewTime({ time: timeStr, date: dateStr, day: dayStr });
-    }
-
-    cadencer.setCallback(getTime);
     cadencer.start();
 
     return () => {
-      // console.log('Cadencer Unmount!');
       cadencer.setCallback(null);
       cadencer.stop();
     };
