@@ -28,27 +28,33 @@
 .header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   @media (min-width: 1200px) {
     width: 80vw;
+    justify-content: space-between;
   }
   @media (min-width: 800px - 1px) and (max-width: 1200px - 1px) {
     width: 95vw;
     margin-bottom: 20px;
+    margin-top: 20px;
+    justify-content: space-between;
   }
   @media (min-width: 768px - 1px) and (max-width: 800px - 1px) {
     width: 95vw;
     margin-bottom: 20px;
+    margin-top: 20px;
+    justify-content: space-between;
   }
   @media (min-width: 375px - 1px) and (max-width: 768px - 1px) {
     width: 95vw;
     flex-wrap: wrap;
     margin-bottom: 70px;
+    margin-top: 20px;
   }
   @media (min-width: 320px - 1px) and (max-width: 375px - 1px) {
     width: 95vw;
     flex-wrap: wrap;
     margin-bottom: 70px;
+    margin-top: 20px;
   }
   height: 69px;
 }
@@ -66,9 +72,6 @@
   line-height: 22px;
   letter-spacing: -0.408px;
   color: #1157a7;
-}
-
-.quit-icon {
 }
 
 .main {
@@ -106,9 +109,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 680px;
-  height: 895px;
+  // justify-content: center;
+  // width: 680px;
+  // height: 895px;
+  justify-content: space-between;
+  width: 660px;
+  height: 855px;
   background: #ffffff;
   box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
@@ -127,15 +133,6 @@
   width: auto;
   display: inline-block;
   white-space: nowrap;
-}
-
-.country-content-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  width: 660px;
-  height: 855px;
 }
 
 .country-content__title {
@@ -279,4 +276,9 @@
 .lblRoundedOne {
   margin-left: 10px;
   margin-top: 21.5px;
+}
+
+.back-btn {
+  margin-bottom: 20px;
+  cursor: pointer;
 }
