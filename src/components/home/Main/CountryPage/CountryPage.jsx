@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import styles from './style.scss';
+import { guide } from '../../../../assets/atlases/guide.js';
 
 import Footer from '../../Footer/Footer';
 import LanguageSwitcher from '../../Header/LanguageSwitcher';
@@ -84,20 +85,7 @@ const CountryPage = ({ isAuth, language, currentCountry }) => {
                   <WidgetMap lang={language} country={currentCountry} />
                 </div>
                 <p>
-                  MAIN TEXT CONTENTMAIN TEXT CONTENTMAIN TEXT CONTENTMAIN TEXT CONTENTMAIN TEXT
-                  CONTENTMAIN TEXT CONTENTMAIN TEXT CONTENTMAIN TEXT CONTENTMAIN TEXT CONTENTMAIN
-                  TEXT CONTENTMAIN TEXT CONTENTMAIN TEXT CONTENTMAIN TEXT CONTENTMAIN TEXT
-                  CONTENTMAIN TEXT CONTENTMAIN TEXT CONTENTMAIN TEXT CONTENTMAIN TEXT CONTENTMAIN
-                  TEXT CONTENTMAIN TEXT CONTENTMAIN TEXT CONTENTMAIN TEXT CONTENT CONTENTMAIN TEXT
-                  CONTENTMAIN TEXT CONTENTMAIN TEXT CONTENTMAIN TEXT CONTENTMAIN TEXT CONTENTMAIN
-                  TEXT CONTENTMAIN TEXT CONTENTMAIN TEXT CONTENTCONTENTMAIN TEXT CONTENTMAIN TEXT
-                  CONTENTMAIN TEXT CONTENTMAIN TEXT CONTENTMAIN TEXT CONTENTMAIN TEXT CONTENTMAIN
-                  TEXT CONTENTMAIN TEXT CONTENTCONTENTMAIN TEXT CONTENTMAIN TEXT CONTENTMAIN TEXT
-                  CONTENTMAIN TEXT CONTENTMAIN TEXT CONTENTMAIN TEXT CONTENTMAIN TEXT CONTENTMAIN
-                  TEXT CONTENTCONTENTMAIN TEXT CONTENTMAIN TEXT CONTENTMAIN TEXT CONTENTMAIN TEXT
-                  CONTENTMAIN TEXT CONTENTMAIN TEXT CONTENTMAIN TEXT CONTENTMAIN TEXT
-                  CONTENTCONTENTMAIN TEXT CONTENTMAIN TEXT CONTENTMAIN TEXT CONTENTMAIN TEXT
-                  CONTENTMAIN TEXT CONTENTMAIN TEXT CONTENTMAIN TEXT CONTENTMAIN TEXT CONTENT
+                  {guide[language][currentCountry].main}
                 </p>
               </div>
             </div>
