@@ -18,7 +18,7 @@ import CountryCard from './Main/CountryCard/CountryCard';
 import Widgets from './Widgets/Widgets';
 import countriesAtlas, { labels } from '../../assets/atlases/countriesAtlas';
 
-const Home = ({ switchCountryAction, isAuth, language }) => {
+const Home = ({ switchCountryAction, isAuth, language, currentCountry }) => {
   const [widgetIsActive, setWidgetIsActive] = useState(false);
   const [countries, setCountries] = useState(countriesAtlas);
   const [searchValue, setSearchValue] = useState('');
@@ -46,6 +46,11 @@ const Home = ({ switchCountryAction, isAuth, language }) => {
   const widgetCheckboxHandler = () => {
     setWidgetIsActive(!widgetIsActive);
   };
+
+  const switchCountryHandler = (country) => {
+    switchCountryAction(country.code);
+    history.push('/country');
+  }
 
   return (
     <>
@@ -82,10 +87,7 @@ const Home = ({ switchCountryAction, isAuth, language }) => {
                 return (
                   <CountryCard
                     key={country.id}
-                    onClick={(e) => {
-                      switchCountryAction(country.code);
-                      history.push('/country');
-                    }}
+                    onClick={() => switchCountryHandler(country)}
                     countryCode={country.code}
                     language={language}
                   />
@@ -93,13 +95,13 @@ const Home = ({ switchCountryAction, isAuth, language }) => {
               }
 
               if (
-                labels[language][country.code].name.includes(searchValue) ||
-                labels[language][country.code].capital.includes(searchValue)
+                labels[language][country.code].name.toLowerCase().includes(searchValue.toLowerCase()) ||
+                labels[language][country.code].capital.toLowerCase().includes(searchValue.toLowerCase())
               ) {
                 return (
                   <CountryCard
                     key={country.id}
-                    onClick={() => history.push('/country')}
+                    onClick={() => switchCountryHandler(country)}
                     countryCode={country.code}
                     language={language}
                   />
@@ -124,7 +126,7 @@ const mapDispatchToProps = {
 const mapStateToProps = (state) => ({
   isAuth: state.authReducer.auth,
   language: state.switchLanguageReducer.language,
-  country: state.switchCountryReducer.country,
+  currentCountry: state.switchCountryReducer.country,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

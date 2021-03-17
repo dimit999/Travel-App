@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -14,11 +14,23 @@ import EnterButton from '../../Header/EnterButton';
 import LoggedUserInfo from '../../Header/LoggedUserInfo';
 import GuestUserInfo from '../../Header/GuestUserInfo';
 import Widgets from '../../Widgets/Widgets';
+import Slider from './Slider';
+import { labels } from '../../../../assets/atlases/countriesAtlas';
+import WidgetMap from '../../Widgets/WidgetMap/WidgetMap';
 
-const CountryPage = ({isAuth, language}) => {
+const CountryPage = ({isAuth, language, currentCountry}) => {
   const [widgetIsActive, setWidgetIsActive] = useState(false);
+  const [widgetsTitle, setWidgetsTitle] = useState('Виджеты');
 
-  const history = useHistory();
+  useEffect(() => {
+    if (language === 'en-US') {
+      setWidgetsTitle('Widgets');
+    } else if (language === 'fr-FR') {
+      setWidgetsTitle('Widgets');
+    } else {
+      setWidgetsTitle('Виджеты');
+    }
+  }, [language]);
 
   const widgetCheckboxHandler = () => {
     setWidgetIsActive(!widgetIsActive);
@@ -51,17 +63,17 @@ const CountryPage = ({isAuth, language}) => {
               <Form.Check
                 type="switch"
                 id="custom-switch"
-                label="Виджеты"
+                label={widgetsTitle}
                 onChange={widgetCheckboxHandler}
               />
             </Form>
           </div>
           <div className={styles['country-content-wrapper']}>
             <div className={styles['country-content__title']}>
-              <h1>COUNTRY NAME</h1>
+              <h1>{labels[language][currentCountry].name}</h1>
             </div>
             <div className={styles['country-content__slider']}>
-              FOTO_SLIDER
+              <Slider />
             </div>
             <div className={styles['content-wrapper']}>
               <div className={styles['country-description']}>
@@ -69,7 +81,7 @@ const CountryPage = ({isAuth, language}) => {
                   <p>DESCRIPTION</p>
                 </div>
                 <div className={styles['country-description__map']}>
-                  MAP
+                  <WidgetMap lang={language} country={currentCountry} />
                 </div>
               </div>
               <div className={styles['country__text-content']}>
@@ -93,6 +105,7 @@ const CountryPage = ({isAuth, language}) => {
 const mapStateToProps = state => ({
   isAuth: state.authReducer.auth,
   language: state.switchLanguageReducer.language,
+  currentCountry: state.switchCountryReducer.country
 });
 
 export default connect(mapStateToProps, null)(CountryPage);

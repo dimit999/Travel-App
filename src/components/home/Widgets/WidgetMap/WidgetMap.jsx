@@ -16,7 +16,7 @@ import { labels } from '../../../../assets/atlases/countriesAtlas';
 
 function WidgetMap(props) {
   useEffect(() => {
-    let map = new Map({
+    new Map({
       target: document.getElementById('map-container'),
       layers: [
         new TileLayer({
