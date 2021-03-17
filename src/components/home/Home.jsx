@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { switchCountryAction } from '../../redux/actions';
 
 import styles from '@/components/home/style.scss';
 
@@ -17,7 +18,7 @@ import CountryCard from './Main/CountryCard/CountryCard';
 import Widgets from './Widgets/Widgets';
 import countriesAtlas, { labels } from '../../assets/atlases/countriesAtlas';
 
-const Home = ({ isAuth, language }) => {
+const Home = ({ switchCountryAction, isAuth, language }) => {
   const [widgetIsActive, setWidgetIsActive] = useState(false);
   const [countries, setCountries] = useState(countriesAtlas);
   const [searchValue, setSearchValue] = useState('');
@@ -32,11 +33,11 @@ const Home = ({ isAuth, language }) => {
     } else {
       setWidgetsTitle('Виджеты');
     }
-  }, [language])
+  }, [language]);
 
   useEffect(() => {
-    setCountries(countriesAtlas)
-  }, [])
+    setCountries(countriesAtlas);
+  }, []);
 
   const searchHandler = (e) => {
     setSearchValue(e.target.value);
@@ -53,16 +54,8 @@ const Home = ({ isAuth, language }) => {
           <Logo />
           <Search onChange={searchHandler} searchValue={searchValue} />
           <LanguageSwitcher />
-          {
-            isAuth
-              ? <LoggedUserInfo />
-              : <GuestUserInfo />
-          }
-          {
-            isAuth
-              ? <QuitButton />
-              : <EnterButton />
-          }
+          {isAuth ? <LoggedUserInfo /> : <GuestUserInfo />}
+          {isAuth ? <QuitButton /> : <EnterButton />}
         </header>
 
         <main className={styles['main']}>
@@ -89,7 +82,10 @@ const Home = ({ isAuth, language }) => {
                 return (
                   <CountryCard
                     key={country.id}
-                    onClick={() => history.push('/country')}
+                    onClick={(e) => {
+                      switchCountryAction(country.code);
+                      history.push('/country');
+                    }}
                     countryCode={country.code}
                     language={language}
                   />
@@ -121,9 +117,14 @@ const Home = ({ isAuth, language }) => {
   );
 };
 
-const mapStateToProps = state => ({
+const mapDispatchToProps = {
+  switchCountryAction,
+};
+
+const mapStateToProps = (state) => ({
   isAuth: state.authReducer.auth,
   language: state.switchLanguageReducer.language,
+  country: state.switchCountryReducer.country,
 });
 
-export default connect(mapStateToProps, null)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

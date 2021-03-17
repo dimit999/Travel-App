@@ -10,17 +10,17 @@ function WidgetWeather(props) {
   const [weather, setWeather] = useState(props.weatherRU);
 
   useEffect(() => {
-    console.log(weather)
+    //console.log(weather)
     if (props.lang === 'ru-RU') {
-      setWeather(props.weatherRU)
+      setWeather(props.weatherRU);
     }
     if (props.lang === 'en-US') {
-      setWeather(props.weatherEN)
+      setWeather(props.weatherEN);
     }
     if (props.lang === 'fr-FR') {
-      setWeather(props.weatherFR)
+      setWeather(props.weatherFR);
     }
-  }, [props.lang])
+  }, [props.lang]);
 
   return (
     <div className={styles['widget-weather']}>
