@@ -1,10 +1,10 @@
-/* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import { Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import styles from './style.scss';
+import { guide } from '../../../../assets/atlases/guide.js';
 
 import Footer from '../../Footer/Footer';
 import LanguageSwitcher from '../../Header/LanguageSwitcher';
@@ -20,7 +20,7 @@ import WidgetMap from '../../Widgets/WidgetMap/WidgetMap';
 import VideoPlayer from './VideoPlayer';
 import BackBtn from '../BackBtn/BackBtn'
 
-const CountryPage = ({isAuth, language, currentCountry}) => {
+const CountryPage = ({ isAuth, language, currentCountry }) => {
   const [widgetIsActive, setWidgetIsActive] = useState(false);
   const [widgetsTitle, setWidgetsTitle] = useState('Виджеты');
 
@@ -41,31 +41,32 @@ const CountryPage = ({isAuth, language, currentCountry}) => {
   return (
     <React.Fragment>
       <div className={styles['country-page-wrapper']}>
-      <header className={styles['header']}>
+        <header className={styles['header']}>
           <Logo />
           <LanguageSwitcher />
-          {
-            isAuth
-              ? <LoggedUserInfo />
-              : <GuestUserInfo />
-          }
-          {
-            isAuth
-              ? <QuitButton />
-              : <EnterButton />
-          }
+          {isAuth ? <LoggedUserInfo /> : <GuestUserInfo />}
+          {isAuth ? <QuitButton /> : <EnterButton />}
         </header>
 
         <main className={styles['main']}>
-          <div className={widgetIsActive? styles['widgets-wrapper_active'] : styles['widgets-wrapper']}>
+          <div
+            className={
+              widgetIsActive ? styles['widgets-wrapper_active'] : styles['widgets-wrapper']
+            }
+          >
             <Widgets />
           </div>
           <div>
             <Form>
               <div className={styles['widgetSwitcher']}>
                 <div className={styles['widgets']}>
-                    <input type='checkbox' value="None" id={styles['widgets']} onChange={widgetCheckboxHandler} />
-                    <label htmlFor={styles['widgets']}></label>
+                  <input
+                    type="checkbox"
+                    value="None"
+                    id={styles['widgets']}
+                    onChange={widgetCheckboxHandler}
+                  />
+                  <label htmlFor={styles['widgets']}></label>
                 </div>
                 <label className={styles['lblRoundedOne']}>{widgetsTitle}</label>
               </div>
@@ -80,20 +81,17 @@ const CountryPage = ({isAuth, language, currentCountry}) => {
               <Slider />
             </div>
             <div className={styles['content-wrapper']}>
-              <div className={styles['country-description']}>
-                <div className={styles['country-description__text-content']}>
-                  <p>DESCRIPTION</p>
-                </div>
+              <div className={styles['country__text-content']}>
                 <div className={styles['country-description__map']}>
                   <WidgetMap lang={language} country={currentCountry} />
                 </div>
+                <p>
+                  {guide[language][currentCountry].main}
+                </p>
               </div>
-              <div className={styles['country__text-content']}>
-                <p>MAIN TEXT CONTENT</p>
-              </div>
-              <div className={styles['country__video']}>
-                <VideoPlayer />
-              </div>
+            </div>
+            <div className={styles['country__video']}>
+              <VideoPlayer />
             </div>
           </div>
         </main>
@@ -106,10 +104,10 @@ const CountryPage = ({isAuth, language, currentCountry}) => {
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isAuth: state.authReducer.auth,
   language: state.switchLanguageReducer.language,
-  currentCountry: state.switchCountryReducer.country
+  currentCountry: state.switchCountryReducer.country,
 });
 
 export default connect(mapStateToProps, null)(CountryPage);
