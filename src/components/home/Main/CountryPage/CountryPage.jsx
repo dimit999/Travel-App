@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import { Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
@@ -19,6 +18,7 @@ import Slider from './Slider';
 import { labels } from '../../../../assets/atlases/countriesAtlas';
 import WidgetMap from '../../Widgets/WidgetMap/WidgetMap';
 import VideoPlayer from './VideoPlayer';
+import BackBtn from '../BackBtn/BackBtn'
 
 const CountryPage = ({ isAuth, language, currentCountry }) => {
   const [widgetIsActive, setWidgetIsActive] = useState(false);
@@ -72,6 +72,7 @@ const CountryPage = ({ isAuth, language, currentCountry }) => {
               </div>
             </Form>
           </div>
+          <BackBtn />
           <div className={styles['country-content-wrapper']}>
             <div className={styles['country-content__title']}>
               <h1>{labels[language][currentCountry].name}</h1>

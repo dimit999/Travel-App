@@ -28,27 +28,33 @@
 .header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   @media (min-width: 1200px) {
     width: 80vw;
+    justify-content: space-between;
   }
   @media (min-width: 800px - 1px) and (max-width: 1200px - 1px) {
     width: 95vw;
     margin-bottom: 20px;
+    margin-top: 20px;
+    justify-content: space-between;
   }
   @media (min-width: 768px - 1px) and (max-width: 800px - 1px) {
     width: 95vw;
     margin-bottom: 20px;
+    margin-top: 20px;
+    justify-content: space-between;
   }
   @media (min-width: 375px - 1px) and (max-width: 768px - 1px) {
     width: 95vw;
     flex-wrap: wrap;
     margin-bottom: 70px;
+    margin-top: 20px;
   }
   @media (min-width: 320px - 1px) and (max-width: 375px - 1px) {
     width: 95vw;
     flex-wrap: wrap;
     margin-bottom: 70px;
+    margin-top: 20px;
   }
   height: 69px;
 }
@@ -66,9 +72,6 @@
   line-height: 22px;
   letter-spacing: -0.408px;
   color: #1157a7;
-}
-
-.quit-icon {
 }
 
 .main {
@@ -128,6 +131,7 @@
   display: inline-block;
   white-space: nowrap;
 }
+
 .country-content__title {
   display: flex;
   align-items: center;
@@ -259,4 +263,9 @@
 .lblRoundedOne {
   margin-left: 10px;
   margin-top: 21.5px;
+}
+
+.back-btn {
+  margin-bottom: 20px;
+  cursor: pointer;
 }
