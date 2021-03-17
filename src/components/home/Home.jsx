@@ -68,12 +68,13 @@ const Home = ({ switchCountryAction, isAuth, language }) => {
           </div>
           <div>
             <Form>
-              <Form.Check
-                type="switch"
-                id="custom-switch"
-                label={widgetsTitle}
-                onChange={widgetCheckboxHandler}
-              />
+              <div className={styles['widgetSwitcher']}>
+                <div className={styles['widgets']}>
+                    <input type='checkbox' value="None" id={styles['widgets']} onChange={widgetCheckboxHandler} />
+                    <label htmlFor={styles['widgets']}></label>
+                </div>
+                <label className={styles['lblRoundedOne']}>{widgetsTitle}</label>
+              </div>
             </Form>
           </div>
           <div className={styles['home-content-wrapper']}>
