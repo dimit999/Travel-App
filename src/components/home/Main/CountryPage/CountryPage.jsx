@@ -17,6 +17,7 @@ import Widgets from '../../Widgets/Widgets';
 import Slider from './Slider';
 import { labels } from '../../../../assets/atlases/countriesAtlas';
 import WidgetMap from '../../Widgets/WidgetMap/WidgetMap';
+import VideoPlayer from './VideoPlayer';
 
 const CountryPage = ({isAuth, language, currentCountry}) => {
   const [widgetIsActive, setWidgetIsActive] = useState(false);
@@ -89,7 +90,7 @@ const CountryPage = ({isAuth, language, currentCountry}) => {
                 <p>MAIN TEXT CONTENT</p>
               </div>
               <div className={styles['country__video']}>
-                VIDEO
+                <VideoPlayer />
               </div>
             </div>
           </div>
