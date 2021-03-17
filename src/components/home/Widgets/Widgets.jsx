@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { labels, codes } from '../../../assets/atlases/countriesAtlas';
 
 import styles from '@/components/home/style.scss';
 
@@ -18,20 +19,20 @@ import WidgetWeather from './WidgetWeather/WidgetWeather';
 
 const Widgets = (props) => {
   const weatherPropsRU = {
-    city: 'Саратов',
+    city: labels['ru-RU'][props.country].capital,
     language: 'ru-RU',
   };
   const weatherPropsEN = {
-    city: 'Саратов',
+    city: labels['en-US'][props.country].capital,
     language: 'en-US',
   };
   const weatherPropsFR = {
-    city: 'Саратов',
+    city: labels['fr-FR'][props.country].capital,
     language: 'fr-FR',
   };
 
   const currencyProps = {
-    currency: 'ZAR',
+    currency: codes[props.country].currency,
     language: props.language,
   };
 
@@ -53,7 +54,7 @@ const Widgets = (props) => {
 
   return (
     <div className={styles['widgets-container']}>
-      <WidgetTime zone="Africa/Johannesburg" lang={props.language} />
+      <WidgetTime zone={codes[props.country].zone} lang={props.language} />
 
       {props.currencyLoading ? (
         <Loader />
@@ -64,10 +65,10 @@ const Widgets = (props) => {
       {props.weatherLoading ? (
         <Loader />
       ) : (
-        <WidgetWeather city={weatherPropsRU.city} lang={props.language} />
+        <WidgetWeather city={labels[props.language][props.country].capital} lang={props.language} />
       )}
 
-      <WidgetMap lang={props.language} country="ZAF" />
+      <WidgetMap lang={props.language} country={props.country} />
     </div>
   );
 };
@@ -76,6 +77,7 @@ const mapStateToProps = (state) => ({
   weatherLoading: state.loaderReducer.isLoading.weatherLoading,
   currencyLoading: state.loaderReducer.isLoading.currencyLoading,
   language: state.switchLanguageReducer.language,
+  country: state.switchCountryReducer.country,
 });
 
 const mapDispatchToProps = {

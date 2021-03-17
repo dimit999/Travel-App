@@ -65,3 +65,14 @@ export const labels = {
     IND: { name: 'Индия', capital: 'Нью-Дели' },
   },
 };
+
+export const codes = {
+  ZAF: { currency: 'ZAR', zone: 'Africa/Johannesburg' },
+  USA: { currency: 'USD', zone: 'America/New_York' },
+  CHN: { currency: 'CNY', zone: 'Asia/Shanghai' },
+  AUS: { currency: 'AUD', zone: 'Australia/Sydney' },
+  BRA: { currency: 'BRL', zone: 'America/Sao_Paulo' },
+  FRA: { currency: 'EUR', zone: 'Europe/Paris' },
+  GBR: { currency: 'GBP', zone: 'Europe/London' },
+  IND: { currency: 'INR', zone: 'Asia/Kolkata' },
+};

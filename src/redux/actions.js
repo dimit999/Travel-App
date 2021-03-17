@@ -12,6 +12,7 @@ import {
   CURRENCY_REQUEST,
   SWITCH_LANGUAGE,
   GUEST_ENTER,
+  SWITCH_COUNTRY,
 } from './constants';
 
 const authAction = () => ({
@@ -73,6 +74,11 @@ const switchLanguageAction = (language) => ({
   payload: language,
 });
 
+const switchCountryAction = (country) => ({
+  type: SWITCH_COUNTRY,
+  payload: country,
+});
+
 export {
   authAction,
   quitAction,
@@ -87,4 +93,5 @@ export {
   registrationSuccess,
   switchLanguageAction,
   guestAction,
+  switchCountryAction,
 };
