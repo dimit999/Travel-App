@@ -8,20 +8,22 @@ import { switchLanguageAction } from '../../../redux/actions';
 
 const LanguageSwitcher = ({switchLanguageAction, language}) => {
   return (
-    <Form.Group>
-      <Form.Control
-        defaultValue={language}
-        size="sm"
-        as="select"
-        onChange={(e) => {
-          switchLanguageAction(e.target.value);
-        }}
-      >
-        <option value='ru-RU'>RU</option>
-        <option value='en-US'>EN</option>
-        <option value='fr-FR'>FR</option>
-      </Form.Control>
-    </Form.Group>
+    <div className={styles['switcher-lang-control']}>
+      <Form.Group>
+        <Form.Control
+          defaultValue={language}
+          size="sm"
+          as="select"
+          onChange={(e) => {
+            switchLanguageAction(e.target.value);
+          }}
+        >
+          <option value='ru-RU'>RU</option>
+          <option value='en-US'>EN</option>
+          <option value='fr-FR'>FR</option>
+        </Form.Control>
+      </Form.Group>
+    </div>
   );
 };
 

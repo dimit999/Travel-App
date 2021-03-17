@@ -7,7 +7,7 @@ import styles from '@/components/home/style.scss';
 const Search = ({onChange, searchValue, language}) => {
   const [searchTitle, setSearchTitle] = useState('Поиск');
   const clickHandler = () => {};
-  
+
   useEffect(() => {
     if (language === 'en-US') {
       setSearchTitle('Search');
@@ -20,19 +20,23 @@ const Search = ({onChange, searchValue, language}) => {
 
   return (
     <div className={styles['search']}>
-      <InputGroup className="mb-3">
-        <FormControl
-          placeholder={`${searchTitle}...`}
-          aria-label={searchTitle}
-          aria-describedby="basic-addon2"
-          autoFocus={true}
-          onChange={onChange}
-          value={searchValue}
+      <div className="search-container">
+        <div className={styles['search-box']}>
+          <input type="text" className={styles['search-input']} placeholder={`${searchTitle}...`} autoFocus={true} onChange={onChange}/>
+
+          <button className={styles['search-button']}>
+            <i className={styles['fas']} className={styles['fa-search']}>
+            <img
+          src="/assets/image/search-icon.svg"
+          alt="Search-icon"
+          className="Search-icon"
+          width="30"
+          height="30"
         />
-        <InputGroup.Append>
-          <Button variant="outline-secondary">{searchTitle}</Button>
-        </InputGroup.Append>
-      </InputGroup>
+            </i>
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
