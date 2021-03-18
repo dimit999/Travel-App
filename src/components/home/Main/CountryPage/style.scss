@@ -49,12 +49,16 @@
     flex-wrap: wrap;
     margin-bottom: 70px;
     margin-top: 20px;
+    column-gap: 100px;
+    justify-content: space-around;
   }
   @media (min-width: 320px - 1px) and (max-width: 375px - 1px) {
     width: 95vw;
     flex-wrap: wrap;
     margin-bottom: 70px;
     margin-top: 20px;
+    column-gap: 100px;
+    justify-content: space-around;
   }
   height: 69px;
 }
