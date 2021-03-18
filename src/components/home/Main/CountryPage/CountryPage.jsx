@@ -18,7 +18,7 @@ import Slider from './Slider';
 import { labels } from '../../../../assets/atlases/countriesAtlas';
 import WidgetMap from '../../Widgets/WidgetMap/WidgetMap';
 import VideoPlayer from './VideoPlayer';
-import BackBtn from '../BackBtn/BackBtn'
+import BackBtn from '../BackBtn/BackBtn';
 
 const CountryPage = ({ isAuth, language, currentCountry }) => {
   const [widgetIsActive, setWidgetIsActive] = useState(false);
@@ -49,13 +49,6 @@ const CountryPage = ({ isAuth, language, currentCountry }) => {
         </header>
 
         <main className={styles['main']}>
-          <div
-            className={
-              widgetIsActive ? styles['widgets-wrapper_active'] : styles['widgets-wrapper']
-            }
-          >
-            <Widgets />
-          </div>
           <div>
             <Form>
               <div className={styles['widgetSwitcher']}>
@@ -73,6 +66,13 @@ const CountryPage = ({ isAuth, language, currentCountry }) => {
             </Form>
           </div>
           <BackBtn />
+          <div
+            className={
+              widgetIsActive ? styles['widgets-wrapper_active'] : styles['widgets-wrapper']
+            }
+          >
+            <Widgets />
+          </div>
           <div className={styles['country-content-wrapper']}>
             <div className={styles['country-content__title']}>
               <h1>{labels[language][currentCountry].name}</h1>
@@ -85,9 +85,7 @@ const CountryPage = ({ isAuth, language, currentCountry }) => {
                 <div className={styles['country-description__map']}>
                   <WidgetMap lang={language} country={currentCountry} />
                 </div>
-                <p>
-                  {guide[language][currentCountry].main}
-                </p>
+                <p>{guide[language][currentCountry].main}</p>
               </div>
             </div>
             <div className={styles['country__video']}>
