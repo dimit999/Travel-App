@@ -17,20 +17,29 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 400px;
-  height: 540px;
   background: #ffffff;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
   border-radius: 20px;
   font-family: Roboto;
   font-style: normal;
+  @media (min-width: 1200px) {
+    width: 400px;
+    height: 540px;
+  }
+  @media (min-width: 400px - 1px) and (max-width: 1200px - 1px) {
+    width: 400px;
+    height: 540px;
+  }
+  @media (min-width: 320px - 1px) and (max-width: 400px - 1px) {
+    width: 310px;
+    padding: 30px;
+  }
 }
 
 .form-title {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 410px;
   height: 38px;
   font-weight: 500;
   font-size: 24px;
@@ -49,17 +58,26 @@
 .form__label {
   display: flex;
   align-items: center;
-  width: 345px;
   font-weight: 300;
   font-size: 16px;
   line-height: 19px;
   color: #424242;
+  @media (min-width: 1200px) {
+    width: 345px;
+  }
+  @media (min-width: 400px - 1px) and (max-width: 1200px - 1px) {
+    width: 345px;
+  }
+  @media (min-width: 320px - 1px) and (max-width: 400px - 1px) {
+    width: 290px;
+  }
 }
 
 .form__input {
   border: 1px solid #c9cacc;
   box-sizing: border-box;
   border-radius: 4px;
+  margin-bottom: 10px;
 }
 
 .buttons-wrapper {
@@ -67,8 +85,16 @@
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
-  width: 345px;
   margin-top: 5px;
+  @media (min-width: 1200px) {
+    width: 345px;
+  }
+  @media (min-width: 400px - 1px) and (max-width: 1200px - 1px) {
+    width: 345px;
+  }
+  @media (min-width: 320px - 1px) and (max-width: 400px - 1px) {
+    flex-direction: column;
+  }
 }
 
 .submit-button, .guest-submit-button {
@@ -115,19 +141,18 @@
   justify-content: center;
   margin-top: 15px;
   @media (min-width: 1200px) {
-    margin-bottom: 100px;
+    margin-bottom: 130px;
   }
   @media (min-width: 800px - 1px) and (max-width: 1200px - 1px) {
     margin-bottom: 130px;
   }
   @media (min-width: 768px - 1px) and (max-width: 800px - 1px) {
-    margin-bottom: 230px;
+    margin-bottom: 130px;
   }
   @media (min-width: 375px - 1px) and (max-width: 768px - 1px) {
-    margin-bottom: 120px;
-
+    margin-bottom: 50px;
   }
   @media (min-width: 320px - 1px) and (max-width: 375px - 1px) {
-    margin-bottom: 120px;
+    margin-bottom: 0px;
   }
 }
